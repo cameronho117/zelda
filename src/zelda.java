@@ -23,8 +23,8 @@ import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 
-public class Zelda {
-    public Zelda() {
+public class zelda {
+    public zelda() {
         setup();
     }
 
@@ -1584,7 +1584,7 @@ public class Zelda {
         bindKey ( myPanel , "LEFT" ) ;
         bindKey ( myPanel , "RIGHT" ) ;
         bindKey ( myPanel , "F" ) ;
-        appFrame.getContentPane().add(myPanel,"South ");
+        appFrame.getContentPane().add(myPanel,"South");
         appFrame.setVisible( true );
     }
     private static Boolean endgame ;
