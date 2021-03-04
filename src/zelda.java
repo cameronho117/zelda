@@ -734,7 +734,7 @@ public class Zelda {
     {
         Graphics g = appFrame.getGraphics();
         Graphics2D g2D = ( Graphics2D ) g;
-        if ( backgroundState.substring(0,2 ).equals( " KI" ))
+        if ( backgroundState.substring(0,2 ).equals( "KI" ))
         {
             int i = Integer.parseInt(backgroundState.substring (4,6 ) );
             int j = Integer.parseInt(backgroundState.substring(2 ,4 ) );
