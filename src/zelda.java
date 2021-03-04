@@ -29,25 +29,25 @@ public class Zelda {
     }
 
     public static void setup() {
-        appFrame = new JFrame( ”The Legend of Zelda:Link’s Awakening” );
+        appFrame = new JFrame( "The Legend of Zelda:Link’s Awakening" );
         XOFFSET = 0;
         YOFFSET = 40;
         WINWIDTH = 338;
         WINHEIGHT = 271;
         pi = 3.14159265358979;
-        quarterPi = 0.25 ∗pi;
-        halfPi = 0.5 ∗pi;
-        threequartersPi = 0.75 ∗pi;
-        fivequartersPi = 1.25 ∗pi;
-        threehalvesPi = 1.5 ∗pi;
-        sevenquartersPi = 1.75 ∗pi;
-        twoPi = 2.0 ∗pi;
+        quarterPi = 0.25 * pi;
+        halfPi = 0.5 *pi;
+        threequartersPi = 0.75 *pi;
+        fivequartersPi = 1.25 *pi;
+        threehalvesPi = 1.5 *pi;
+        sevenquartersPi = 1.75 *pi;
+        twoPi = 2.0 *pi;
         endgame = false;
         p1width = 20; //18 .5 ;
         p1height = 20; //25;
-        p1originalX = (double) XOFFSET + ((double) WINWIDTH / 2.0) −(p1width /
+        p1originalX = (double) XOFFSET + ((double) WINWIDTH / 2.0) -(p1width /
                 2.0);
-        p1originalY = (double) YOFFSET + ((double) WINHEIGHT / 2.0) −(p1height
+        p1originalY = (double) YOFFSET + ((double) WINHEIGHT / 2.0) -(p1height
                 / 2.0);
         level = 3;
         audiolifetime = new Long(78000); // 78 seconds f o r KI .wav
@@ -61,7 +61,7 @@ public class Zelda {
                 Vector<BufferedImage> temp = new Vector<BufferedImage>();
                 for (int j = 0; j < xdimKI; j++)
                 {
-                    BufferedImage tempImg = ImageIO.read ( new File ( ”blank.png”));
+                    BufferedImage tempImg = ImageIO.read ( new File ( "blank.png"));
                     temp.addElement ( tempImg );
                 }
                 backgroundKI.addElement (temp);
@@ -73,20 +73,19 @@ public class Zelda {
                     if (( j== 5 && i== 10 ) || ( j== 5 && i== 11 ) || ( j==
                             6 && i== 10 ) || ( j== 6 && i== 11 ) ||
                             ( j== 7 && i== 10 ) || ( j== 7 && i== 11 ) || ( j==
-                            8 && i== 9 ) || ( j== 8 && i== 10 )) // TODO swap
-                        j and i
+                            8 && i== 9 ) || ( j== 8 && i== 10 )) // TODO swap j and i;
                     {
-                        String filename = ” KI ”;
+                        String filename = " KI ";
                         if ( j < 10 )
                         {
-                            filename = filename + ”0”;
+                            filename = filename + "0";
                         }
                         filename = filename + j;
                         if ( i < 10 )
                         {
-                            filename = filename + ”0”;
+                            filename = filename + "0";
                         }
-                        filename = filename + i + ” . png”;
+                        filename = filename + i + " . png";
 //System . out . p ri n tl n ( filename ) ;
                         backgroundKI.elementAt (i).set( j,ImageIO.read ( new File (filename ) ) ) ;
                     }
@@ -133,8 +132,7 @@ public class Zelda {
                 }
             }
 
-            xdimTC = 9;//7 ; // TODO: need to be able to j u s t use 7 and 6 , not
-            9 and 8.
+            xdimTC = 9;//7 ; // TODO: need to be able to j u s t use 7 and 6 , not 9 and 8
             ydimTC = 8 ;//6 ;
             backgroundTC = new Vector< Vector< BufferedImage > >();
             for ( int i = 0 ; i < ydimTC ; i++ )
@@ -142,7 +140,7 @@ public class Zelda {
                 Vector< BufferedImage > temp = new Vector< BufferedImage >();
                 for ( int j = 0 ; j < xdimTC ; j++ )
                 {
-                    BufferedImage tempImg = ImageIO.read ( new File ( ”blank.png”));
+                    BufferedImage tempImg = ImageIO.read ( new File ( "blank.png"));
                     temp.addElement(tempImg);
                 }
                 backgroundTC.addElement(temp);
@@ -164,17 +162,17 @@ public class Zelda {
                             i == 0 ) || ( j == 6 && i == 1 ) ||
                             ( j == 6 && i == 2 ) || ( j == 6 && i == 3 ))
                     {
-                        String filename = ”TC”;
+                        String filename = "TC";
                         if ( j < 10 )
                         {
-                            filename = filename + ”0”;
+                            filename = filename + "0";
                         }
                         filename = filename + j;
                         if ( i < 10 )
                         {
-                            filename = filename + ”0”;
+                            filename = filename + "0";
                         }
-                        filename = filename + i + ”.png”;
+                        filename = filename + i + ".png";
                         backgroundTC.elementAt(i).set( j, ImageIO.read( new File(filename ) ) );
                     }
                 }
@@ -192,40 +190,40 @@ public class Zelda {
                 }
                 wallsTC.add(temp);
             }
-            player = ImageIO.read( new File ( ”link00.png” ) );
+            player = ImageIO.read( new File ( "link00.png" ) );
 // Link ’ s images
             link = new Vector< BufferedImage >();
             for ( int i = 0 ; i < 72; i ++ )
             {
                 if( i < 10 )
                 {
-                    String filename = ” link0 ” + i + ”.png”;
+                    String filename = " link0 " + i + ".png";
                     link.addElement( ImageIO.read ( new File ( filename ) ) );
                 }
                 else
                 {
-                    String filename = ” link” + i + ”.png”;
+                    String filename = " link" + i + ".png";
                     link.addElement ( ImageIO.read ( new File ( filename ) ) );
                 }
             }
 // BluePig Enemy ’ s images
             bluepigEnemies = new Vector< ImageObject >();
             bluepigEnemy = new Vector< BufferedImage >();
-            bluepigEnemy.addElement(ImageIO.read ( new File ( ”BPB1.png” ) ) );
-            bluepigEnemy.addElement( ImageIO.read ( new File ( ”BPB2.png” ) ) );
-            bluepigEnemy.addElement( ImageIO.read ( new File ( ”BPF1.png” ) ) );
-            bluepigEnemy.addElement(ImageIO.read ( new File ( ”BPF2.png” ) ) );
-            bluepigEnemy.addElement ( ImageIO.read ( new File ( ”BPL1.png” ) ) );
-            bluepigEnemy.addElement ( ImageIO.read ( new File ( ”BPL2.png” ) ) );
-            bluepigEnemy.addElement ( ImageIO.read ( new File ( ”BPR1.png” ) ) );
-            bluepigEnemy.addElement ( ImageIO.read ( new File ( ”BPR2.png” ) ) );
+            bluepigEnemy.addElement(ImageIO.read ( new File ( "BPB1.png" ) ) );
+            bluepigEnemy.addElement( ImageIO.read ( new File ( "BPB2.png" ) ) );
+            bluepigEnemy.addElement( ImageIO.read ( new File ( "BPF1.png" ) ) );
+            bluepigEnemy.addElement(ImageIO.read ( new File ( "BPF2.png" ) ) );
+            bluepigEnemy.addElement ( ImageIO.read ( new File ( "BPL1.png" ) ) );
+            bluepigEnemy.addElement ( ImageIO.read ( new File ( "BPL2.png" ) ) );
+            bluepigEnemy.addElement ( ImageIO.read ( new File ( "BPR1.png" ) ) );
+            bluepigEnemy.addElement ( ImageIO.read ( new File ( "BPR2.png" ) ) );
 // BubbleBoss Enemies
             bubblebossEnemies = new Vector<ImageObject>();
 // Health images
-            leftHeartOutline = ImageIO.read ( new File ( ” heartOutlineLeft.png”) );
-            rightHeartOutline = ImageIO.read ( new File ( ”heartOutlineRight.png” ) );
-            leftHeart = ImageIO.read ( new File ( ”heartLeft.png” ));
-            rightHeart = ImageIO.read ( new File ( ”heartRight.png” ) );
+            leftHeartOutline = ImageIO.read ( new File ( " heartOutlineLeft.png") );
+            rightHeartOutline = ImageIO.read ( new File ( "heartOutlineRight.png" ) );
+            leftHeart = ImageIO.read ( new File ( "heartLeft.png" ));
+            rightHeart = ImageIO.read ( new File ( "heartRight.png" ) );
         }
         catch ( IOException ioe )
         {
@@ -258,7 +256,7 @@ public class Zelda {
             while ( endgame == false )
             {
                 Long curTime = new Long ( System.currentTimeMillis() );
-                if(curTime− lastAudioStart > audiolifetime )
+                if(curTime - lastAudioStart > audiolifetime)
                 {
                     playAudio ( backgroundState );
                 }
@@ -277,18 +275,18 @@ public class Zelda {
         }
         try
         {
-            if ( backgroundState.substring(0, 2).equals( ” KI ” ) )
+            if ( backgroundState.substring(0, 2).equals( " KI " ) )
             {
-                AudioInputStream ais = AudioSystem.getAudioInputStream (new File( ” KI.wav” ).getAbsoluteFile() );
+                AudioInputStream ais = AudioSystem.getAudioInputStream (new File( " KI.wav" ).getAbsoluteFile() );
                 clip = AudioSystem.getClip();
                 clip.open( ais );
                 clip.start();
                 lastAudioStart = System.currentTimeMillis();
                 audiolifetime = new Long(78000);
             }
-            else if( backgroundState.substring(0,2).equals ( ”TC” ) )
+            else if( backgroundState.substring(0,2).equals ( "TC" ) )
             {
-                AudioInputStream ais = AudioSystem.getAudioInputStream (new File( ”TC .wav” ).getAbsoluteFile());
+                AudioInputStream ais = AudioSystem.getAudioInputStream (new File( "TC .wav" ).getAbsoluteFile());
                 clip = AudioSystem.getClip();
                 clip.open(ais);
                 clip.start();
@@ -315,7 +313,7 @@ public class Zelda {
             xcoord = xcoord + 1;
             if ( xcoord < 10 )
             {
-                ret = input. substring(0, 2 ) + ”0” + xcoord;
+                ret = input. substring(0, 2 ) + "0" + xcoord;
             }
             else
             {
@@ -323,7 +321,7 @@ public class Zelda {
             }
             if ( ycoord < 10 )
             {
-                ret = ret + ”0” + ycoord;
+                ret = ret + "0" + ycoord;
             }
             else
             {
@@ -334,10 +332,10 @@ public class Zelda {
         {
             int xcoord = Integer.parseInt ( input.substring( 2, 4 ) );
             int ycoord = Integer.parseInt ( input.substring ( 4, 6 ) );
-            xcoord = xcoord − 1;
+            xcoord = xcoord - 1;
             if ( xcoord < 10 )
             {
-                ret = input.substring (0, 2 ) + ”0” + xcoord;
+                ret = input.substring (0, 2 ) + "0" + xcoord;
             }
             else
             {
@@ -345,7 +343,7 @@ public class Zelda {
             }
             if ( ycoord < 10 )
             {
-                ret = ret + ”0” + ycoord;
+                ret = ret + "0" + ycoord;
             }
             else
             {
@@ -359,7 +357,7 @@ public class Zelda {
             ycoord = ycoord + 1;
             if ( xcoord < 10 )
             {
-                ret = input.substring (0, 2 ) + ”0” + xcoord;
+                ret = input.substring (0, 2 ) + "0" + xcoord;
             }
             else
             {
@@ -367,7 +365,7 @@ public class Zelda {
             }
             if ( ycoord < 10 )
             {
-                ret = ret + ”0” + ycoord;
+                ret = ret + "0" + ycoord;
             }
             else
             {
@@ -378,10 +376,10 @@ public class Zelda {
         {
             int xcoord = Integer.parseInt ( input.substring ( 2, 4 ) );
             int ycoord = Integer.parseInt ( input.substring ( 4, 6 ) );
-            ycoord = ycoord − 1;
+            ycoord = ycoord - 1;
             if ( xcoord < 10 )
             {
-                ret = input.substring (0, 2 ) + ”0” + xcoord;
+                ret = input.substring (0, 2 ) + "0" + xcoord;
             }
             else
             {
@@ -389,7 +387,7 @@ public class Zelda {
             }
             if ( ycoord < 10 )
             {
-                ret = ret + ”0” + ycoord;
+                ret = ret + "0" + ycoord;
             }
             else
             {
@@ -420,7 +418,7 @@ public class Zelda {
                     p1velocity = velocitystep;
                     if ( upPressed )
                     {
-                        if ( leftpressed )
+                        if ( leftPressed )
                         {
                             p1.setInternalAngle( fivequartersPi );
                         }
@@ -485,8 +483,8 @@ public class Zelda {
                     p1.setInternalAngle(threehalvesPi);
                 }
                 p1.updateBounce();
-                p1.move(p1velocity ∗ Math.cos( p1.getInternalAngle()),
-                        p1velocity ∗ Math.sin ( p1.getInternalAngle()));
+                p1.move(p1velocity * Math.cos( p1.getInternalAngle()),
+                        p1velocity * Math.sin ( p1.getInternalAngle()));
                 int wrap = p1.screenWrap( XOFFSET, XOFFSET + WINWIDTH, YOFFSET,
                         YOFFSET + WINHEIGHT );
                 backgroundState = bgWrap(backgroundState,wrap);
@@ -506,7 +504,7 @@ public class Zelda {
     }
     private static void generateEnemies ( String backgroundState )
     {
-        if ( backgroundState.substring(0, 6 ).equals( ”KI0809 ” ) )
+        if ( backgroundState.substring(0, 6 ).equals( "KI0809 " ) )
         {
             bluepigEnemies.addElement ( new ImageObject (20 , 90 , 33 , 33 , 0.0 ));
             bluepigEnemies.addElement ( new ImageObject (250 , 230, 33 , 33 , 0.0)
@@ -541,7 +539,7 @@ public class Zelda {
                 {
                     for ( int i = 0 ; i < bluepigEnemies.size(); i ++ )
                     {
-                        int state = randomNumbers.nextIn ( 1000 );
+                        int state = randomNumbers.nextInt ( 1000 );
                         if ( state< 5 )
                         {
                             bluepigvelocity = bluepigvelocitystep;
@@ -572,15 +570,15 @@ public class Zelda {
                             bluepigvelocity = 0;
                         }
                         bluepigEnemies.elementAt(i).updateBounce();
-                        bluepigEnemies.elementAt(i).move(bluepigvelocity ∗ Math.
+                        bluepigEnemies.elementAt(i).move(bluepigvelocity * Math.
                                         cos( bluepigEnemies.elementAt(i).getInternalAngle()),
-                                bluepigvelocity ∗ Math.sin ( bluepigEnemies.elementAt(i).getInternalAngle ()));
+                                bluepigvelocity * Math.sin ( bluepigEnemies.elementAt(i).getInternalAngle ()));
                     }
                     for ( int i = 0 ; i < bubblebossEnemies.size(); i++ )
                     {
                     }
                 }
-                catch ( java.lang.NullPointerException jlnpe )
+                catch ( NullPointerException jlnpe )
                 {
 // NOP
                 }
@@ -598,7 +596,7 @@ public class Zelda {
                 Long curTime = new Long ( System.currentTimeMillis());
                 if ( availableToDropLife && p1.getDropLife()>0)
                 {
-                    int newLife = p1.getLife() − p1.getDropLife();
+                    int newLife = p1.getLife() - p1.getDropLife();
                     p1.setDropLife(0);
                     availableToDropLife = false;
                     lastDropLife = System.currentTimeMillis();
@@ -606,8 +604,8 @@ public class Zelda {
                     try
                     {
                         AudioInputStream ais = AudioSystem.getAudioInputStream (
-                                new File ( ”hurt.wav” ).getAbsoluteFile());
-                        Cliphurtclip = AudioSystem.getClip();
+                                new File ( "hurt.wav" ).getAbsoluteFile());
+                        Clip hurtclip = AudioSystem.getClip();
                         hurtclip.open(ais);
                         hurtclip.start();
                     }
@@ -617,7 +615,7 @@ public class Zelda {
                 }
                 else
                 {
-                    if ( curTime − lastDropLife > dropLifeLifetime )
+                    if ( curTime - lastDropLife > dropLifeLifetime )
                     {
                         availableToDropLife = true ;
                     }
@@ -633,33 +631,33 @@ public class Zelda {
             while ( endgame == false )
             {
 // check player against doors in given scenes
-                if ( backgroundState.substring (0 ,6 ) . equals ( ”KI0511 ” ) )
+                if ( backgroundState.substring (0 ,6 ) . equals ( "KI0511 " ) )
                 {
                     if ( collisionOccurs ( p1, doorKItoTC ) )
                     {
                         p1.moveto ( p1originalX, p1originalY );
-                        backgroundState = ”TC0305”;
+                        backgroundState = "TC0305";
                         clip.stop();
                         playAudio(backgroundState );
                     }
                 }
-                else if ( backgroundState.substring(0,6 ).equals( ”TC0305” ) )
+                else if ( backgroundState.substring(0,6 ).equals( "TC0305" ) )
                 {
                     if ( collisionOccurs ( p1 , doorTCtoKI ) )
                     {
                         p1.moveto ( p1originalX , p1originalY );
-                        backgroundState = ”KI0511 ”;
+                        backgroundState = "KI0511 ";
                         clip.stop();
                         playAudio(backgroundState);
                     }
                 }
 // check player and enemies against walls
-                if(backgroundState.substring(0,6 ).equals( ”KI0510 ” ) )
+                if(backgroundState.substring(0,6 ).equals( "KI0510 " ) )
                 {
                     checkMoversAgainstWalls( wallsKI.elementAt(5).elementAt(10)
                     );
                 }
-                if( backgroundState.substring(0,6 ).equals( ”KI0809 ” ) )
+                if( backgroundState.substring(0,6 ).equals( "KI0809 " ) )
                 {
                     checkMoversAgainstWalls ( wallsKI.elementAt(8).elementAt(9) );
                 }
@@ -668,7 +666,7 @@ public class Zelda {
                 {
                     if ( collisionOccurs( p1, bluepigEnemies.elementAt(i)) )
                     {
-//System . out . p ri n tl n ( ” S t i l l C ollidin g : ” + i + ” , ” +
+//System . out . p ri n tl n ( " S t i l l C ollidin g : " + i + " , " +
                         System.currentTimeMillis();
                         p1.setBounce(true);
                         bluepigEnemies.elementAt(i).setBounce(true);
@@ -707,37 +705,36 @@ public class Zelda {
     private static void lockrotateObjAroundObjbottom ( ImageObject objOuter , ImageObject objInner , double dist )
     {
         objOuter.moveto ( objInner.getX() + ( dist + objInner.getWidth() / 2.0 )
-                ∗ Math.cos (−objInner.getAngle() + pi /2.0 ) + objOuter.getWidth() / 2.0 ,
-                objInner.getY() + ( dist + objInner.getHeight() / 2.0 ) ∗ Math.sin(−objInner.getAngle() + pi /2.0 ) + objOuter . getHeight() /
+                * Math.cos (-objInner.getAngle() + pi /2.0 ) + objOuter.getWidth() / 2.0 ,
+                objInner.getY() + ( dist + objInner.getHeight() / 2.0 ) * Math.sin(-objInner.getAngle() + pi /2.0 ) + objOuter . getHeight() /
                         2.0);
         objOuter.setAngle( objInner.getAngle());
     }
-    // di s t i s a distance between the two obj ec t s at the top o f the inner
-    object.
+    // di s t i s a distance between the two obj ec t s at the top o f the inner object.
     private static void lockrotateObjAroundObjtop ( ImageObject objOuter , ImageObject objInner , double dist )
     {
-        objOuter.moveto ( objInner.getX() + objOuter.getWidth() + ( objInner.getWidth() / 2.0 + ( dist + objInner.getWidth() / 2.0 ) ∗ Math.cos( objInner.getAngle() + pi /2.0 ) ) / 2.0, objInner.getY()−objOuter.getHeight() + ( dist + objInner.getHeight() / 2.0 )∗Math.sin( objInner.getAngle() / 2.0 ));
+        objOuter.moveto ( objInner.getX() + objOuter.getWidth() + ( objInner.getWidth() / 2.0 + ( dist + objInner.getWidth() / 2.0 ) * Math.cos( objInner.getAngle() + pi /2.0 ) ) / 2.0, objInner.getY()-objOuter.getHeight() + ( dist + objInner.getHeight() / 2.0 )*Math.sin( objInner.getAngle() / 2.0 ));
         objOuter.setAngle(objInner.getAngle());
     }
     private static AffineTransformOp rotateImageObject ( ImageObject obj )
     {
-        AffineTransform at = AffineTransform . getRotateInstance ( −obj . getAngle
+        AffineTransform at = AffineTransform . getRotateInstance ( -obj . getAngle
                 (), obj.getWidth() /2.0 , obj.getHeight() /2.0);
-        AffineTransformOp atop = new AffineTransformOp ( at , AffineTransformOp.TYPE BILINEAR);
+        AffineTransformOp atop = new AffineTransformOp ( at , AffineTransformOp.TYPE_BILINEAR);
         return atop ;
     }
     private static AffineTransformOp spinImageObject ( ImageObject obj )
     {
-        AffineTransform at = AffineTransform . getRotateInstance ( −obj.
+        AffineTransform at = AffineTransform . getRotateInstance ( -obj.
                 getInternalAngle(), obj.getWidth() /2.0, obj.getHeight() /2.0);
-        AffineTransformOpatop = new AffineTransformOp ( at , AffineTransformOp.TYPE BILINEAR );
+        AffineTransformOp atop = new AffineTransformOp ( at , AffineTransformOp.TYPE_BILINEAR );
         return atop ;
     }
     private static void backgroundDraw ()
     {
         Graphics g = appFrame.getGraphics();
         Graphics2D g2D = ( Graphics2D ) g;
-        if ( backgroundState.substring(0,2 ).equals( ” KI” ))
+        if ( backgroundState.substring(0,2 ).equals( " KI" ))
         {
             int i = Integer.parseInt(backgroundState.substring (4,6 ) );
             int j = Integer.parseInt(backgroundState.substring(2 ,4 ) );
@@ -750,7 +747,7 @@ public class Zelda {
                 }
             }
         }
-        if ( backgroundState.substring(0,2 ).equals( ”TC” ) )
+        if ( backgroundState.substring(0,2 ).equals( "TC" ) )
         {
             int i = Integer.parseInt ( backgroundState.substring(4,6 ) );
             int j = Integer.parseInt ( backgroundState.substring (2,4 ) );
@@ -836,33 +833,32 @@ public class Zelda {
         }
         else
         {
-            if( Math.abs( lastPressed−90.0 ) < 1.0 )
+            if( Math.abs( lastPressed-90.0 ) < 1.0 )
             {
                 g2D.drawImage( rotateImageObject(p1).filter(link.elementAt
                                 (4), null ), (int) (p1.getX() + 0.5 ) , ( int ) ( p1.getY() + 0.5 )
                         , null ) ;
             }
-            if ( Math.abs ( lastPressed− 270.0 ) < 1.0 )
+            if ( Math.abs ( lastPressed- 270.0 ) < 1.0 )
             {
                 g2D.drawImage(rotateImageObject(p1).filter(link.elementAt
                                 (2), null), (int) (p1.getX() + 0.5), (int) ( p1.getY() + 0.5)
                         ,null );
             }
-            if( Math.abs(lastPressed − 0.0 ) < 1.0 )
+            if( Math.abs(lastPressed - 0.0 ) < 1.0 )
             {
                 g2D.drawImage(rotateImageObject(p1).filter(link.elementAt
                                 (6), null ), (int) (p1.getX() + 0.5), (int) ( p1.getY() + 0.5 )
                         ,null ) ;
             }
-            if ( Math.abs(lastPressed − 180.0 ) < 1.0 )
+            if ( Math.abs(lastPressed - 180.0 ) < 1.0 )
             {
                 g2D.drawImage (rotateImageObject(p1).filter(link.elementAt
                                 (0),null),(int)( p1.getX() + 0.5 ), (int) (p1.getY() + 0.5)
                         ,null);
             }
         }
-//g2D . drawImage ( rotate ImageObject ( p1 ) . f i l t e r ( player , null ) , ( i n t ) (
-        p1.getX() + 0.5), (int) (p1.getY() + 0.5),null);
+       // g2D.drawImage ( rotate(ImageObject ( p1 ) . filter ( player , null ) , ( int ) (p1.getX() + 0.5), (int) (p1.getY() + 0.5),null));
     }
     private static void healthDraw ()
     {
@@ -878,13 +874,13 @@ public class Zelda {
             if ( i% 2 == 0 )
             {
                 g2D.drawImage ( rotateImageObject(p1).filter(leftHeartOutline,null),
-                        leftscale ∗ i + leftoffset + XOFFSET, YOFFSET,
+                        leftscale * i + leftoffset + XOFFSET, YOFFSET,
                         null );
             }
             else
             {
                 g2D.drawImage ( rotateImageObject(p1).filter(
-                        rightHeartOutline, null ),leftscale ∗ i + rightoffset +
+                        rightHeartOutline, null ),leftscale * i + rightoffset +
                         XOFFSET, YOFFSET, null );
             }
         }
@@ -893,13 +889,13 @@ public class Zelda {
             if ( i % 2 == 0 )
             {
                 g2D.drawImage ( rotateImageObject(p1).filter(leftHeart, null
-                        ),leftscale ∗ i + leftoffset + interioroffset + XOFFSET,
+                        ),leftscale * i + leftoffset + interioroffset + XOFFSET,
                         interioroffset + YOFFSET, null ) ;
             }
             else
             {
                 g2D.drawImage(rotateImageObject(p1).filter( rightHeart, null
-                ), leftscale ∗ i + leftoffset − halfinterioroffset +
+                ), leftscale * i + leftoffset - halfinterioroffset +
                         XOFFSET, interioroffset + YOFFSET, null );
             }
         }
@@ -910,7 +906,7 @@ public class Zelda {
         Graphics2D g2D = ( Graphics2D ) g;
         for ( int i = 0 ; i < bluepigEnemies.size(); i++)
         {
-            if ( Math.abs( bluepigEnemies.elementAt(i).getInternalAngle()− 0.0) < 1.0)
+            if ( Math.abs( bluepigEnemies.elementAt(i).getInternalAngle()- 0.0) < 1.0)
             {
                 if ( bluepigEnemies.elementAt(i).getCurrentFrame() <
                         bluepigEnemies.elementAt(i).getMaxFrames()/2)
@@ -929,7 +925,7 @@ public class Zelda {
                 }
                 bluepigEnemies.elementAt(i).updateCurrentFrame();
             }
-            if ( Math.abs(bluepigEnemies.elementAt(i).getInternalAngle() − pi
+            if ( Math.abs(bluepigEnemies.elementAt(i).getInternalAngle() - pi
             ) < 1.0 )
             {
                 if ( bluepigEnemies.elementAt(i).getCurrentFrame()<
@@ -949,7 +945,7 @@ public class Zelda {
                 }
                 bluepigEnemies.elementAt(i).updateCurrentFrame();
             }
-            if( Math.abs(bluepigEnemies.elementAt(i).getInternalAngle() − halfPi )< 1.0 )
+            if( Math.abs(bluepigEnemies.elementAt(i).getInternalAngle() - halfPi )< 1.0 )
             {
                 if ( bluepigEnemies.elementAt(i).getCurrentFrame()<
                         bluepigEnemies.elementAt(i).getMaxFrames()/2)
@@ -968,7 +964,7 @@ public class Zelda {
                 }
                 bluepigEnemies.elementAt(i).updateCurrentFrame();
             }
-            if( Math.abs( bluepigEnemies.elementAt(i).getInternalAngle() −
+            if( Math.abs( bluepigEnemies.elementAt(i).getInternalAngle() -
                     threehalvesPi) < 1.0 )
             {
                 if (bluepigEnemies.elementAt(i).getCurrentFrame()<
@@ -994,7 +990,7 @@ public class Zelda {
     {
         public KeyPressed ()
         {
-            action = ” ”;
+            action = " ";
         }
         public KeyPressed ( String input )
         {
@@ -1002,31 +998,31 @@ public class Zelda {
         }
         public void actionPerformed ( ActionEvent e )
         {
-            if ( action.equals(”UP”))
+            if ( action.equals("UP"))
             {
                 upPressed = true;
                 lastPressed = 90.0;
             }
-            if ( action.equals( ”DOWN” ) )
+            if ( action.equals( "DOWN" ) )
             {
                 downPressed = true;
                 lastPressed = 270.0;
             }
-            if ( action.equals( ”LEFT” ) )
+            if ( action.equals( "LEFT" ) )
             {
                 leftPressed = true;
                 lastPressed = 180.0;
             }
-            if ( action.equals( ”RIGHT” ) )
+            if ( action.equals( "RIGHT" ) )
             {
                 rightPressed = true;
                 lastPressed = 0.0;
             }
-            if ( action.equals( ”A” ))
+            if ( action.equals( "A" ))
             {
                 aPressed = true;
             }
-            if ( action.equals( ”X” ))
+            if ( action.equals( "X" ))
             {
                 xPressed = true;
             }
@@ -1037,7 +1033,7 @@ public class Zelda {
     {
         public KeyReleased ()
         {
-            action = ” ”;
+            action = " ";
         }
         public KeyReleased ( String input )
         {
@@ -1045,27 +1041,27 @@ public class Zelda {
         }
         public void actionPerformed ( ActionEvent e )
         {
-            if ( action.equals( ”UP” ) )
+            if ( action.equals( "UP" ) )
             {
                 upPressed = false;
             }
-            if ( action.equals( ”DOWN” ) )
+            if ( action.equals( "DOWN" ) )
             {
                 downPressed = false;
             }
-            if ( action.equals( ”LEFT” ) )
+            if ( action.equals( "LEFT" ) )
             {
                 leftPressed = false;
             }
-            if ( action.equals( ”RIGHT” ) )
+            if ( action.equals( "RIGHT" ) )
             {
                 rightPressed = false;
             }
-            if ( action.equals( ”A” ) )
+            if ( action.equals( "A" ) )
             {
                 aPressed = false;
             }
-            if ( action.equals ( ”X” ) )
+            if ( action.equals ( "X" ) )
             {
                 xPressed = false;
             }
@@ -1091,7 +1087,7 @@ public class Zelda {
             aPressed = false;
             xPressed = false;
             lastPressed = 90.0;
-            backgroundState = ”KI0809 ”;
+            backgroundState = "KI0809 ";
             availableToDropLife = true;
             try
             {
@@ -1142,43 +1138,43 @@ public class Zelda {
         public int decodeLevel ( String input )
         {
             int ret = 3;
-            if ( input.equals( ”One” ) )
+            if ( input.equals( "One" ) )
             {
                 ret = 1;
             }
-            else if ( input.equals( ”Two” ) )
+            else if ( input.equals( "Two" ) )
             {
                 ret = 2;
             }
-            else if ( input.equals( ” Three ” ) )
+            else if ( input.equals( " Three " ) )
             {
                 ret = 3;
             }
-            else if ( input.equals ( ”Four ”) )
+            else if ( input.equals ( "Four ") )
             {
                 ret = 4;
             }
-            else if ( input.equals ( ” Five ” ))
+            else if ( input.equals ( " Five " ))
             {
-                ret 5;
+               ret = 5;
             }
-            else if ( input.equals( ”Six” ))
+            else if ( input.equals( "Six" ))
             {
                 ret = 6;
             }
-            else if ( input.equals( ”Seven” ) )
+            else if ( input.equals( "Seven" ) )
             {
                 ret = 7;
             }
-            else if ( input.equals( ” Eight ” ) )
+            else if ( input.equals( " Eight " ) )
             {
                 ret = 8;
             }
-            else if ( input.equals( ”Nine ”))
+            else if ( input.equals( "Nine "))
             {
                 ret = 9;
             }
-            else if ( input.equals( ”Ten”))
+            else if ( input.equals( "Ten"))
             {
                 ret = 10;
             }
@@ -1422,8 +1418,7 @@ public class Zelda {
         public void generateTriangles()
         {
             triangles = new Vector<Double>();
-// format : (0 , 1) , (2 , 3) , (4 , 5) i s the ( x , y ) coords o f a
-            triangle.
+// format : (0 , 1) , (2 , 3) , (4 , 5) i s the ( x , y ) coords o f a triangle.
 // ge t cen ter poin t o f a l l coordina tes .
                     comX = getComX();
             comY = getComY();
@@ -1443,12 +1438,10 @@ public class Zelda {
         {
             for ( int i = 0 ; i < triangles.size() ; i = i + 6 )
             {
-                System.out.print( ”p0x: ” + triangles.elementAt(i) + ”,p0y:”
+                System.out.print( "p0x: " + triangles.elementAt(i) + ",p0y:"
                 + triangles.elementAt(i+1));
-                System.out.print(”p1x:” + triangles.elementAt(i +2) + ”,p1y:
-” + triangles.elementAt(i+3));
-                System.out.println( ”p2x: ” + triangles.elementAt(i+4) + ”,
-                p2y: ”+ triangles.elementAt(i+5));
+                System.out.print("p1x:" + triangles.elementAt(i +2) + ",p1y: " + triangles.elementAt(i+3));
+                System.out.println( "p2x: " + triangles.elementAt(i+4) + ", p2y: "+ triangles.elementAt(i+5));
             }
         }
         public double getComX ( )
@@ -1517,7 +1510,7 @@ public class Zelda {
             angle = angle + angleinput ;
             while ( angle > twoPi )
             {
-                angle = angle − twoPi;
+                angle = angle - twoPi;
             }
             while ( angle < 0 )
             {
@@ -1529,7 +1522,7 @@ public class Zelda {
             internalangle = internalangle + internalangleinput;
             while ( internalangle > twoPi )
             {
-                internalangle = internalangle − twoPi;
+                internalangle = internalangle - twoPi;
             }
             while ( internalangle < 0 )
             {
@@ -1557,41 +1550,41 @@ public class Zelda {
     }
     private static void bindKey ( JPanel myPanel , String input )
     {
-        myPanel.getInputMap(IFW).put( KeyStroke.getKeyStroke(” pressed ”+
-                input ), input + ”pressed” );
-        myPanel.getActionMap().put( input + ” pressed ”, new KeyPressed ( input
+        myPanel.getInputMap(IFW).put( KeyStroke.getKeyStroke(" pressed "+
+                input ), input + "pressed" );
+        myPanel.getActionMap().put( input + " pressed ", new KeyPressed ( input
         ) );
-        myPanel.getInputMap(IFW).put( KeyStroke . getKeyStroke( ” released ” +
-                input ) , input + ” released ” );
-        myPanel.getActionMap().put( input + ” released ”, new KeyReleased (
+        myPanel.getInputMap(IFW).put( KeyStroke . getKeyStroke( " released " +
+                input ) , input + " released " );
+        myPanel.getActionMap().put( input + " released ", new KeyReleased (
                 input));
     }
     public static void main ( String [] args )
     {
         setup();
-        appFrame.setDefaultCloseOperation( JFrame.EXIT ON CLOSE ) ;
+        appFrame.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE ) ;
         appFrame.setSize(WINWIDTH+1 ,WINHEIGHT+85);
         JPanel myPanel = new JPanel ();
-///∗
-//    String [] levels = {”One”,”Two”,” Three ”,” Four ” , ” Five ” , ” Six ” , ”
-//    Seven ” , ” Eigh t ” , ” Nine ” , ”Ten” };
+///*
+//    String [] levels = {"One","Two"," Three "," Four " , " Five " , " Six " , "
+//    Seven " , " Eigh t " , " Nine " , "Ten" };
 //    JComboBox<S tring> levelMenu = new JComboBox<S tring >( l e v el s ) ;
 //    levelMenu . se tSelec ted Index ( 2 ) ;
 //    levelMenu . addActionListener ( new GameLevel ( ) ) ;
 //    myPanel . add( levelMenu ) ;
-//∗/
-        JButton quitButton = new JButton ( ”Select” );
+//*/
+        JButton quitButton = new JButton ( "Select" );
         quitButton . addActionListener ( new QuitGame ( ) ) ;
         myPanel . add ( quitButton ) ;
-        JButton newGameButton = new JButton ( ” Start ” ) ;
+        JButton newGameButton = new JButton ( " Start " ) ;
         newGameButton.addActionListener ( new StartGame () );
         myPanel . add ( newGameButton ) ;
-        bindKey ( myPanel , ”UP” ) ;
-        bindKey ( myPanel , ”DOWN” ) ;
-        bindKey ( myPanel , ”LEFT” ) ;
-        bindKey ( myPanel , ”RIGHT” ) ;
-        bindKey ( myPanel , ”F” ) ;
-        appFrame.getContentPane().add(myPanel,”South ”);
+        bindKey ( myPanel , "UP" ) ;
+        bindKey ( myPanel , "DOWN" ) ;
+        bindKey ( myPanel , "LEFT" ) ;
+        bindKey ( myPanel , "RIGHT" ) ;
+        bindKey ( myPanel , "F" ) ;
+        appFrame.getContentPane().add(myPanel,"South ");
         appFrame.setVisible( true );
     }
     private static Boolean endgame ;
@@ -1648,5 +1641,5 @@ public class Zelda {
     private static JFrame appFrame ;
     private static String backgroundState;
     private static Boolean availableToDropLife;
-    private static final int IFW = JComponent.WHENINFOCUSEDWINDOW;
+    private static final int IFW = JComponent.WHEN_IN_FOCUSED_WINDOW;
 }
