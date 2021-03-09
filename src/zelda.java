@@ -1,7 +1,9 @@
+import java.awt.*;
 import java.util.Vector;
 import java.util.Random;
 import java.time.LocalTime;
 import java.time.temporal.ChronoUnit;
+import javax.sound.sampled.FloatControl;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JButton;
@@ -15,8 +17,6 @@ import java.io.File;
 import java.io.IOException;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
 import java.awt.image.AffineTransformOp;
 import javax.sound.sampled.AudioInputStream;
@@ -93,7 +93,7 @@ public class zelda {
                 }
             }
 // s e t tin g up the Koholin t Island walls
-            wallsKI = new Vector< Vector< Vector< ImageObject > > >();
+            wallsKI = new Vector<Vector<Vector<ImageObject>>>();
             for ( int i = 0; i < ydimKI ; i ++ )
             {
                 Vector< Vector< ImageObject > > temp = new Vector< Vector<ImageObject > >();
@@ -111,12 +111,13 @@ public class zelda {
                 {
                     if ( i== 5 && j== 10 )
                     {
-                        wallsKI.elementAt(i).elementAt(j).addElement( new ImageObject( 270, 35, 68, 70, 0.0 ));
+                        wallsKI.elementAt(i).elementAt(j).addElement( new ImageObject( 270, 35,  68,  70, 0.0 ));
                         wallsKI.elementAt(i).elementAt(j).addElement( new ImageObject( 100, 100, 200, 35 , 0.0 ));
-                        wallsKI.elementAt(i).elementAt(j).addElement( new ImageObject( 100, 135, 35, 35, 0.0 ));
-                        wallsKI.elementAt(i).elementAt(j).addElement( new ImageObject( 0 , 165, 35, 135, 0.0 ));
+                        wallsKI.elementAt(i).elementAt(j).addElement( new ImageObject( 100, 135, 35,  35, 0.0 ));
+                        wallsKI.elementAt(i).elementAt(j).addElement( new ImageObject( 0 ,  165, 35,  135, 0.0 ));
                         wallsKI.elementAt(i).elementAt(j).addElement( new ImageObject( 100, 200, 35 , 100, 0.0 ));
-                        wallsKI.elementAt(i).elementAt(j).addElement ( new ImageObject( 135, 270, 200, 35 , 0.0 ));
+                        wallsKI.elementAt(i).elementAt(j).addElement ( new ImageObject( 135,270, 200, 35 , 0.0 ));
+
                     }
                     if ( i== 8 && j == 9 )
                     {
@@ -196,6 +197,13 @@ public class zelda {
 
 // Link ’ s images
             link = new Vector< BufferedImage >();
+            sword = new Vector<BufferedImage>();
+            sword.addElement(ImageIO.read(new File("sword.png")));
+            sword.addElement(ImageIO.read(new File("left.png")));
+            sword.addElement(ImageIO.read(new File("backSword.png")));
+            sword.addElement(ImageIO.read(new File("blank.png")));
+
+
 
             link.addElement(ImageIO.read(new File("link00.png")));
             for ( int i = 0 ; i < 72; i ++ )
@@ -287,20 +295,26 @@ public class zelda {
         }
         try
         {
-            if ( backgroundState.substring(0, 2).equals( " KI " ) )
+            if ( backgroundState.substring(0, 2).equals( "KI" ) )
             {
-                AudioInputStream ais = AudioSystem.getAudioInputStream (new File( " KI.wav" ).getAbsoluteFile() );
+                File f = new File("KI.wav");
+                AudioInputStream audioIn = AudioSystem.getAudioInputStream(f.toURI().toURL());
                 clip = AudioSystem.getClip();
-                clip.open( ais );
+                clip.open( audioIn );
+                FloatControl volume = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+                volume.setValue(-1 * 28);
                 clip.start();
                 lastAudioStart = System.currentTimeMillis();
                 audiolifetime = new Long(78000);
             }
             else if( backgroundState.substring(0,2).equals ( "TC" ) )
             {
-                AudioInputStream ais = AudioSystem.getAudioInputStream (new File( "TC .wav" ).getAbsoluteFile());
+                AudioInputStream ais = AudioSystem.getAudioInputStream (new File( "TC.wav" ).getAbsoluteFile());
                 clip = AudioSystem.getClip();
                 clip.open(ais);
+                FloatControl gainControl =
+                        (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+                gainControl.setValue(-10.0f); // Reduce volume by 25 decibels.
                 clip.start();
                 lastAudioStart = System.currentTimeMillis();
                 audiolifetime = new Long(191000);
@@ -488,6 +502,10 @@ public class zelda {
                             p1.setInternalAngle(0.0);
                         }
                     }
+
+
+
+
                 }
                 else
                 {
@@ -643,7 +661,7 @@ public class zelda {
             while ( endgame == false )
             {
 // check player against doors in given scenes
-                if ( backgroundState.substring (0 ,6 ) . equals ( "KI0511 " ) )
+                if ( backgroundState.substring (0 ,6 ) . equals ( "KI0511" ) )
                 {
                     if ( collisionOccurs ( p1, doorKItoTC ) )
                     {
@@ -658,20 +676,19 @@ public class zelda {
                     if ( collisionOccurs ( p1 , doorTCtoKI ) )
                     {
                         p1.moveto ( p1originalX , p1originalY );
-                        backgroundState = "KI0511 ";
+                        backgroundState = "KI0511";
                         clip.stop();
                         playAudio(backgroundState);
                     }
                 }
 // check player and enemies against walls
-                if(backgroundState.substring(0,6 ).equals( "KI0510 " ) )
+                if(backgroundState.substring(0,6 ).equals( "KI0510" ) )
                 {
-                    checkMoversAgainstWalls( wallsKI.elementAt(5).elementAt(10)
-                    );
+                    checkMoversAgainstWalls( wallsKI.elementAt(5).elementAt(10));
                 }
-                if( backgroundState.substring(0,6 ).equals( "KI0809 " ) )
+                if( backgroundState.substring(0,6 ).equals( "KI0809" ) )
                 {
-                    checkMoversAgainstWalls ( wallsKI.elementAt(8).elementAt(9) );
+                    checkMoversAgainstWalls ( wallsKI.elementAt(8).elementAt(9));
                 }
 // check player against enemies
 //                for ( int i = 0 ; i < bluepigEnemies.size(); i++ )
@@ -704,10 +721,10 @@ public class zelda {
                 }
                 for ( int j = 0 ; j < bluepigEnemies.size(); j++ )
                 {
-                    if ( collisionOccurs ( bluepigEnemies.elementAt(j), wallsInput.elementAt(i)))
-                    {
-                        bluepigEnemies.elementAt(j).setBounce(true);
-                    }
+//                    if ( collisionOccurs ( bluepigEnemies.elementAt(j), wallsInput.elementAt(i)))
+//                    {
+//                        bluepigEnemies.elementAt(j).setBounce(true);
+//                    }
                 }
             }
         }
@@ -823,6 +840,7 @@ public class zelda {
             }
             if( rightPressed == true )
             {
+
                 if( p1.getCurrentFrame ( ) == 0 )
                 {
                     g2D.drawImage(rotateImageObject(p1).filter(link.elementAt(7), null ), ( int ) ( p1. getX() + 0.5), ( int ) ( p1.getY() + 0.5 ), null );
@@ -833,7 +851,12 @@ public class zelda {
                 }
                 p1.updateCurrentFrame();
             }
+
+
+
+
         }
+
         else
         {
 
@@ -844,14 +867,26 @@ public class zelda {
             if ( Math.abs ( lastPressed- 270.0 ) < 1.0 )
             {
                 g2D.drawImage(rotateImageObject(p1).filter(link.elementAt(3), null), (int) (p1.getX() + 0.5), (int) ( p1.getY() + 0.5),null );
+
+                if(ePressed) {
+                    g2D.drawImage(rotateImageObject(p1).filter(sword.elementAt(2), null), (int) (p1.getX() + 0.5), (int) (p1.getY() + 0.5), null);
+                }
             }
             if( Math.abs(lastPressed - 0.0 ) < 1.0 )
             {
-                g2D.drawImage(rotateImageObject(p1).filter(link.elementAt(7), null ), (int) (p1.getX() + 0.5), (int) ( p1.getY() + 0.5 ),null ) ;
+               g2D.drawImage(rotateImageObject(p1).filter(link.elementAt(7), null ), (int) (p1.getX() + 0.5), (int) ( p1.getY() + 0.5 ),null ) ;
+
+                if(ePressed) {
+                    g2D.drawImage(rotateImageObject(p1).filter(link.elementAt(3), null ), (int) (p1.getX() + 0.5), (int) ( p1.getY() + 0.5 ),null ) ;
+                    g2D.drawImage(rotateImageObject(p1).filter(sword.elementAt(0), null), (int) (p1.getX() + 0.5), (int) (p1.getY() + 0.5), null);
+                }
             }
             if ( Math.abs(lastPressed - 180.0 ) < 1.0 )
             {
                 g2D.drawImage (rotateImageObject(p1).filter(link.elementAt(0),null),(int)( p1.getX() + 0.5 ), (int) (p1.getY() + 0.5),null);
+                if(ePressed) {
+                    g2D.drawImage(rotateImageObject(p1).filter(sword.elementAt(1), null), (int) (p1.getX() + 0.5), (int) (p1.getY() + 0.5), null);
+                }
             }
         }
     }
@@ -1022,6 +1057,9 @@ public class zelda {
             {
                 xPressed = true;
             }
+            if(action.equals("E")){
+                ePressed = true;
+        }
         }
         private String action;
     }
@@ -1061,6 +1099,11 @@ public class zelda {
             {
                 xPressed = false;
             }
+            if ( action.equals ( "E" ) )
+            {
+                ePressed = false;
+            }
+
         }
         private String action;
     }
@@ -1082,6 +1125,7 @@ public class zelda {
             rightPressed = false;
             aPressed = false;
             xPressed = false;
+            ePressed = false;
             lastPressed = 90.0;
             backgroundState = "KI0809 ";
             availableToDropLife = true;
@@ -1560,6 +1604,8 @@ public class zelda {
         appFrame.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE ) ;
         appFrame.setSize(WINWIDTH+1 ,WINHEIGHT+85);
         JPanel myPanel = new JPanel ();
+
+
 ///*
 //    String [] levels = {"One","Two"," Three "," Four " , " Five " , " Six " , "
 //    Seven " , " Eigh t " , " Nine " , "Ten" };
@@ -1579,8 +1625,11 @@ public class zelda {
         bindKey(myPanel , "LEFT");
         bindKey(myPanel , "RIGHT");
         bindKey(myPanel , "F");
+        bindKey(myPanel, "E");
         appFrame.getContentPane().add(myPanel,"South");
         appFrame.setVisible( true );
+
+
     }
     private static Boolean endgame ;
     private static Vector< Vector< BufferedImage > > backgroundKI ;
@@ -1593,6 +1642,8 @@ public class zelda {
     private static int ydimTC ;
     private static BufferedImage player ;
     private static Vector< BufferedImage > link ;
+    private static Vector< BufferedImage > sword ;
+
     private static BufferedImage leftHeartOutline;
     private static BufferedImage rightHeartOutline;
     private static BufferedImage leftHeart;
@@ -1608,6 +1659,7 @@ public class zelda {
     private static Boolean rightPressed ;
     private static Boolean aPressed ;
     private static Boolean xPressed ;
+    private static Boolean ePressed ;
     private static double lastPressed ;
     private static ImageObject p1 ;
     private static double p1width ;
