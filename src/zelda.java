@@ -202,6 +202,7 @@ public class zelda {
             sword.addElement(ImageIO.read(new File("left.png")));
             sword.addElement(ImageIO.read(new File("backSword.png")));
             sword.addElement(ImageIO.read(new File("blank.png")));
+           // sword.addElement(ImageIO.read(new File("frontSword.png")));
 
 
 
@@ -862,30 +863,44 @@ public class zelda {
 
             if( Math.abs( lastPressed-90.0 ) < 1.0 )
             {
-                g2D.drawImage( rotateImageObject(p1).filter(link.elementAt(6), null ), (int) (p1.getX() + 0.5 ) , ( int ) ( p1.getY() + 0.5 ), null ) ;
+                //if(!ePressed) {
+                    g2D.drawImage(rotateImageObject(p1).filter(link.elementAt(6), null), (int) (p1.getX() + 0.5), (int) (p1.getY() + 0.5), null);
+               // }
+//                else{
+//                    g2D.drawImage(rotateImageObject(p1).filter(sword.elementAt(4), null), (int) (p1.getX() + 0.5), (int) (p1.getY() + 0.5), null);
+//
+//                }
+
             }
             if ( Math.abs ( lastPressed- 270.0 ) < 1.0 )
             {
-                g2D.drawImage(rotateImageObject(p1).filter(link.elementAt(3), null), (int) (p1.getX() + 0.5), (int) ( p1.getY() + 0.5),null );
-
-                if(ePressed) {
+                if(!ePressed) {
+                    g2D.drawImage(rotateImageObject(p1).filter(link.elementAt(3), null), (int) (p1.getX() + 0.5), (int) (p1.getY() + 0.5), null);
+                }
+                else  {
                     g2D.drawImage(rotateImageObject(p1).filter(sword.elementAt(2), null), (int) (p1.getX() + 0.5), (int) (p1.getY() + 0.5), null);
                 }
             }
             if( Math.abs(lastPressed - 0.0 ) < 1.0 )
             {
-               g2D.drawImage(rotateImageObject(p1).filter(link.elementAt(7), null ), (int) (p1.getX() + 0.5), (int) ( p1.getY() + 0.5 ),null ) ;
-
-                if(ePressed) {
-                    g2D.drawImage(rotateImageObject(p1).filter(link.elementAt(3), null ), (int) (p1.getX() + 0.5), (int) ( p1.getY() + 0.5 ),null ) ;
+                if(!ePressed) {
+                    g2D.drawImage(rotateImageObject(p1).filter(link.elementAt(7), null), (int) (p1.getX() + 0.5), (int) (p1.getY() + 0.5), null);
+                }
+               else {
+                    //g2D.drawImage(rotateImageObject(p1).filter(link.elementAt(3), null ), (int) (p1.getX() + 0.5), (int) ( p1.getY() + 0.5 ),null );
                     g2D.drawImage(rotateImageObject(p1).filter(sword.elementAt(0), null), (int) (p1.getX() + 0.5), (int) (p1.getY() + 0.5), null);
+
                 }
             }
             if ( Math.abs(lastPressed - 180.0 ) < 1.0 )
             {
-                g2D.drawImage (rotateImageObject(p1).filter(link.elementAt(0),null),(int)( p1.getX() + 0.5 ), (int) (p1.getY() + 0.5),null);
-                if(ePressed) {
-                    g2D.drawImage(rotateImageObject(p1).filter(sword.elementAt(1), null), (int) (p1.getX() + 0.5), (int) (p1.getY() + 0.5), null);
+                if(!ePressed){
+                g2D.drawImage(rotateImageObject(p1).filter(link.elementAt(0), null), (int) (p1.getX() + 0.5), (int) (p1.getY() + 0.5), null);
+            }
+               else{
+                    g2D.drawImage(rotateImageObject(p1).filter(sword.elementAt(1), null), (int) (p1.getX() + -45), (int) (p1.getY() + 4), null);
+
+
                 }
             }
         }
