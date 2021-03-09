@@ -75,7 +75,7 @@ public class zelda {
                             ( j== 7 && i== 10 ) || ( j== 7 && i== 11 ) || ( j==
                             8 && i== 9 ) || ( j== 8 && i== 10 )) // TODO swap j and i;
                     {
-                        String filename = " KI ";
+                        String filename = "KI";
                         if ( j < 10 )
                         {
                             filename = filename + "0";
@@ -85,8 +85,9 @@ public class zelda {
                         {
                             filename = filename + "0";
                         }
-                        filename = filename + i + " . png";
+                        filename = filename + i + ".png";
 //System . out . p ri n tl n ( filename ) ;
+                        System.out.println(filename);
                         backgroundKI.elementAt (i).set( j,ImageIO.read ( new File (filename ) ) ) ;
                     }
                 }
@@ -132,79 +133,88 @@ public class zelda {
                 }
             }
 
-            xdimTC = 9;//7 ; // TODO: need to be able to j u s t use 7 and 6 , not 9 and 8
-            ydimTC = 8 ;//6 ;
-            backgroundTC = new Vector< Vector< BufferedImage > >();
-            for ( int i = 0 ; i < ydimTC ; i++ )
-            {
-                Vector< BufferedImage > temp = new Vector< BufferedImage >();
-                for ( int j = 0 ; j < xdimTC ; j++ )
-                {
-                    BufferedImage tempImg = ImageIO.read ( new File ( "blank.png"));
-                    temp.addElement(tempImg);
-                }
-                backgroundTC.addElement(temp);
-            }
-            for(int i = 0; i < backgroundTC.size(); i++ )
-            {
-                for ( int j = 0; j < backgroundTC.elementAt(i).size(); j++ )
-                {
-                    if ((j== 0 && i == 2 ) || ( j == 0 && i == 3 ) || ( j == 0 && i == 4 ) || ( j == 1 && i == 1 ) ||
-                            ( j == 1 && i == 3 ) || ( j == 1 && i == 5 ) || ( j == 2 &&
-                            i == 1 ) || ( j == 2 && i == 2 ) ||
-                            ( j == 2 && i == 3 ) || ( j == 2 && i == 4 ) || ( j == 2 &&
-                            i == 5 ) || ( j == 2 && i == 6 ) ||
-                            ( j == 3 && i == 1 ) || ( j == 3 && i == 2 ) || ( j == 3 &&
-                            i == 3 ) || ( j == 3 && i == 4 ) ||
-                            ( j == 3 && i == 5 ) || ( j == 4 && i == 2 ) || ( j == 4 &&
-                            i == 3 ) || ( j == 4 && i == 4 ) ||
-                            ( j == 5 && i == 2 ) || ( j == 5 && i == 3 ) || ( j == 6 &&
-                            i == 0 ) || ( j == 6 && i == 1 ) ||
-                            ( j == 6 && i == 2 ) || ( j == 6 && i == 3 ))
-                    {
-                        String filename = "TC";
-                        if ( j < 10 )
-                        {
-                            filename = filename + "0";
-                        }
-                        filename = filename + j;
-                        if ( i < 10 )
-                        {
-                            filename = filename + "0";
-                        }
-                        filename = filename + i + ".png";
-                        backgroundTC.elementAt(i).set( j, ImageIO.read( new File(filename ) ) );
-                    }
-                }
-            }
-// s e t tin g up the T ail Cave walls
-            wallsTC = new Vector< Vector< Vector< ImageObject > > >();
-            for ( int i = 0; i< ydimTC; i++ )
-            {
-                Vector< Vector< ImageObject > > temp = new Vector < Vector< ImageObject > >();
-                for ( int j = 0 ; j < xdimTC ; j ++ )
-                {
-                    Vector< ImageObject > tempWalls = new Vector< ImageObject
-                            >();
-                    temp.addElement(tempWalls);
-                }
-                wallsTC.add(temp);
-            }
+//            xdimTC = 9;//7 ; // TODO: need to be able to j u s t use 7 and 6 , not 9 and 8
+//            ydimTC = 8 ;//6 ;
+//            backgroundTC = new Vector< Vector< BufferedImage > >();
+//            for ( int i = 0 ; i < ydimTC ; i++ )
+//            {
+//                Vector< BufferedImage > temp = new Vector< BufferedImage >();
+//                for ( int j = 0 ; j < xdimTC ; j++ )
+//                {
+//                    BufferedImage tempImg = ImageIO.read ( new File ( "blank.png"));
+//                    temp.addElement(tempImg);
+//                }
+//                backgroundTC.addElement(temp);
+//            }
+//            for(int i = 0; i < backgroundTC.size(); i++ )
+//            {
+//                for ( int j = 0; j < backgroundTC.elementAt(i).size(); j++ )
+//                {
+//                    if ((j== 0 && i == 2 ) || ( j == 0 && i == 3 ) || ( j == 0 && i == 4 ) || ( j == 1 && i == 1 ) ||
+//                            ( j == 1 && i == 3 ) || ( j == 1 && i == 5 ) || ( j == 2 &&
+//                            i == 1 ) || ( j == 2 && i == 2 ) ||
+//                            ( j == 2 && i == 3 ) || ( j == 2 && i == 4 ) || ( j == 2 &&
+//                            i == 5 ) || ( j == 2 && i == 6 ) ||
+//                            ( j == 3 && i == 1 ) || ( j == 3 && i == 2 ) || ( j == 3 &&
+//                            i == 3 ) || ( j == 3 && i == 4 ) ||
+//                            ( j == 3 && i == 5 ) || ( j == 4 && i == 2 ) || ( j == 4 &&
+//                            i == 3 ) || ( j == 4 && i == 4 ) ||
+//                            ( j == 5 && i == 2 ) || ( j == 5 && i == 3 ) || ( j == 6 &&
+//                            i == 0 ) || ( j == 6 && i == 1 ) ||
+//                            ( j == 6 && i == 2 ) || ( j == 6 && i == 3 ))
+//                    {
+//                        String filename = "TC";
+//                        if ( j < 10 )
+//                        {
+//                            filename = filename + "0";
+//                        }
+//                        filename = filename + j;
+//                        if ( i < 10 )
+//                        {
+//                            filename = filename + "0";
+//                        }
+//                        filename = filename + i + ".png";
+//                        System.out.println(filename);
+//                        backgroundTC.elementAt(i).set( j, ImageIO.read( new File(filename ) ) );
+//                    }
+//                }
+//            }
+//// s e t tin g up the T ail Cave walls
+//            wallsTC = new Vector< Vector< Vector< ImageObject > > >();
+//            for ( int i = 0; i< ydimTC; i++ )
+//            {
+//                Vector< Vector< ImageObject > > temp = new Vector < Vector< ImageObject > >();
+//                for ( int j = 0 ; j < xdimTC ; j ++ )
+//                {
+//                    Vector< ImageObject > tempWalls = new Vector< ImageObject
+//                            >();
+//                    temp.addElement(tempWalls);
+//                }
+//                wallsTC.add(temp);
+//            }
             player = ImageIO.read( new File ( "link00.png" ) );
+
 // Link ’ s images
             link = new Vector< BufferedImage >();
+
+            link.addElement(ImageIO.read(new File("link00.png")));
             for ( int i = 0 ; i < 72; i ++ )
             {
-                if( i < 10 )
+                if( i < 8 )
                 {
-                    String filename = " link0 " + i + ".png";
+                    String filename = "link0" + i + ".png";
                     link.addElement( ImageIO.read ( new File ( filename ) ) );
+                    System.out.println(filename);
                 }
-                else
-                {
-                    String filename = " link" + i + ".png";
-                    link.addElement ( ImageIO.read ( new File ( filename ) ) );
-                }
+//                else
+//                {
+//                    String filename = "link" + i + ".png";
+//                    System.out.println(filename);
+////                    link.addElement ( ImageIO.read ( new File ( filename ) ) );
+//                }
+
+
+
             }
 // BluePig Enemy ’ s images
             bluepigEnemies = new Vector< ImageObject >();
@@ -220,13 +230,15 @@ public class zelda {
 // BubbleBoss Enemies
             bubblebossEnemies = new Vector<ImageObject>();
 // Health images
-            leftHeartOutline = ImageIO.read ( new File ( " heartOutlineLeft.png") );
-            rightHeartOutline = ImageIO.read ( new File ( "heartOutlineRight.png" ) );
-            leftHeart = ImageIO.read ( new File ( "heartLeft.png" ));
-            rightHeart = ImageIO.read ( new File ( "heartRight.png" ) );
+//            leftHeartOutline = ImageIO.read ( new File ( " heartOutlineLeft.png") );
+//            rightHeartOutline = ImageIO.read ( new File ( "heartOutlineRight.png" ) );
+//            leftHeart = ImageIO.read ( new File ( "heartLeft.png" ));
+//            rightHeart = ImageIO.read ( new File ( "heartRight.png" ) );
         }
         catch ( IOException ioe )
         {
+
+            System.out.println(ioe);
         }
     }
     private static class Animate implements Runnable
@@ -236,7 +248,7 @@ public class zelda {
             while ( endgame == false )
             {
                 backgroundDraw();
-                enemiesDraw();
+                //enemiesDraw();
                 playerDraw();
                 healthDraw();
                 try
@@ -504,7 +516,7 @@ public class zelda {
     }
     private static void generateEnemies ( String backgroundState )
     {
-        if ( backgroundState.substring(0, 6 ).equals( "KI0809 " ) )
+        if ( backgroundState.substring(0, 6 ).equals( "KI0809" ) )
         {
             bluepigEnemies.addElement ( new ImageObject (20 , 90 , 33 , 33 , 0.0 ));
             bluepigEnemies.addElement ( new ImageObject (250 , 230, 33 , 33 , 0.0)
@@ -662,20 +674,20 @@ public class zelda {
                     checkMoversAgainstWalls ( wallsKI.elementAt(8).elementAt(9) );
                 }
 // check player against enemies
-                for ( int i = 0 ; i < bluepigEnemies.size(); i++ )
-                {
-                    if ( collisionOccurs( p1, bluepigEnemies.elementAt(i)) )
-                    {
-//System . out . p ri n tl n ( " S t i l l C ollidin g : " + i + " , " +
-                        System.currentTimeMillis();
-                        p1.setBounce(true);
-                        bluepigEnemies.elementAt(i).setBounce(true);
-                        if(availableToDropLife)
-                        {
-                            p1.setDropLife(1);
-                        }
-                    }
-                }
+//                for ( int i = 0 ; i < bluepigEnemies.size(); i++ )
+//                {
+//                    if ( collisionOccurs( p1, bluepigEnemies.elementAt(i)) )
+//                    {
+////System . out . p ri n tl n ( " S t i l l C ollidin g : " + i + " , " +
+//                        System.currentTimeMillis();
+//                        p1.setBounce(true);
+//                        bluepigEnemies.elementAt(i).setBounce(true);
+//                        if(availableToDropLife)
+//                        {
+//                            p1.setDropLife(1);
+//                        }
+//                    }
+//                }
 // TODO: check enemies against walls
 // TODO: check player against deep water or pi t s
 // TODO: check player against enemy arrows
@@ -765,21 +777,19 @@ public class zelda {
     {
         Graphics g = appFrame.getGraphics();
         Graphics2D g2D = ( Graphics2D ) g;
+
         if ( upPressed || downPressed || leftPressed || rightPressed )
         {
+
             if( upPressed == true )
             {
-                if ( p1.getCurrentFrame() == 0 )
+                if( p1.getCurrentFrame ( ) == 0 )
                 {
-                    g2D.drawImage(rotateImageObject(p1).filter(link.
-                            elementAt(4),null ),(int) (p1.getX() + 0.5 ), (int) ( p1.
-                            getY() + 0.5 ), null );
+                    g2D.drawImage(rotateImageObject(p1).filter(link.elementAt(5), null ), ( int ) ( p1. getX() + 0.5), ( int ) ( p1.getY() + 0.5 ), null );
                 }
                 else if ( p1.getCurrentFrame() == 1 )
                 {
-                    g2D.drawImage ( rotateImageObject(p1).filter(link.
-                            elementAt(5), null ), (int) ( p1.getX() + 0.5 ), ( int ) ( p1.
-                            getY() + 0.5 ), null );
+                    g2D.drawImage(rotateImageObject(p1).filter(link.elementAt(6), null ), (int) ( p1.getX() + 0.5 ), (int) (p1.getY() + 0.5), null );
                 }
                 p1.updateCurrentFrame();
             }
@@ -787,14 +797,11 @@ public class zelda {
             {
                 if ( p1.getCurrentFrame() == 0 )
                 {
-                    g2D.drawImage ( rotateImageObject( p1 ). filter( link.
-                            elementAt(2), null ), (int) ( p1.getX() + 0.5 ), (int) ( p1.
-                            getY() + 0.5), null );
+                    g2D.drawImage ( rotateImageObject( p1 ). filter( link.elementAt(3), null ), (int) ( p1.getX() + 0.5 ), (int) ( p1.getY() + 0.5), null );
                 }
                 else if ( p1.getCurrentFrame() == 1 )
                 {
-                    g2D.drawImage(rotateImageObject(p1).filter(link.
-                            elementAt(3), null ),(int) ( p1.getX() + 0.5), (int) ( p1.getY() + 0.5) , null ) ;
+                    g2D.drawImage(rotateImageObject(p1).filter(link.elementAt(4), null ),(int) ( p1.getX() + 0.5), (int) ( p1.getY() + 0.5) , null ) ;
                 }
                 p1.updateCurrentFrame();
             }
@@ -803,13 +810,13 @@ public class zelda {
                 if ( p1.getCurrentFrame() == 0 )
                 {
                     g2D.drawImage(rotateImageObject(p1).filter(link.
-                            elementAt(0), null ), (int)(p1.getX() + 0.5), (int) ( p1.
+                            elementAt(1), null ), (int)(p1.getX() + 0.5), (int) ( p1.
                             getY() + 0.5),null);
                 }
                 else if ( p1.getCurrentFrame() == 1 )
                 {
                     g2D.drawImage (rotateImageObject(p1).filter(link.
-                            elementAt(1),null), (int) (p1.getX() + 0.5 ), (int) (p1.
+                            elementAt(2),null), (int) (p1.getX() + 0.5 ), (int) (p1.
                             getY() + 0.5 ) , null );
                 }
                 p1.updateCurrentFrame();
@@ -818,47 +825,35 @@ public class zelda {
             {
                 if( p1.getCurrentFrame ( ) == 0 )
                 {
-                    g2D.drawImage ( rotateImageObject(p1).filter(link.
-                            elementAt(6), null ), ( int ) ( p1. getX() + 0.5), ( int ) ( p1.
-                            getY() + 0.5 ), null );
+                    g2D.drawImage(rotateImageObject(p1).filter(link.elementAt(7), null ), ( int ) ( p1. getX() + 0.5), ( int ) ( p1.getY() + 0.5 ), null );
                 }
                 else if ( p1.getCurrentFrame() == 1 )
                 {
-                    g2D.drawImage(rotateImageObject(p1).filter(link.
-                            elementAt(7), null ), (int) ( p1.getX() + 0.5 ), (int) (p1.
-                            getY() + 0.5), null );
+                    g2D.drawImage(rotateImageObject(p1).filter(link.elementAt(8), null ), (int) ( p1.getX() + 0.5 ), (int) (p1.getY() + 0.5), null );
                 }
                 p1.updateCurrentFrame();
             }
         }
         else
         {
+
             if( Math.abs( lastPressed-90.0 ) < 1.0 )
             {
-                g2D.drawImage( rotateImageObject(p1).filter(link.elementAt
-                                (4), null ), (int) (p1.getX() + 0.5 ) , ( int ) ( p1.getY() + 0.5 )
-                        , null ) ;
+                g2D.drawImage( rotateImageObject(p1).filter(link.elementAt(6), null ), (int) (p1.getX() + 0.5 ) , ( int ) ( p1.getY() + 0.5 ), null ) ;
             }
             if ( Math.abs ( lastPressed- 270.0 ) < 1.0 )
             {
-                g2D.drawImage(rotateImageObject(p1).filter(link.elementAt
-                                (2), null), (int) (p1.getX() + 0.5), (int) ( p1.getY() + 0.5)
-                        ,null );
+                g2D.drawImage(rotateImageObject(p1).filter(link.elementAt(3), null), (int) (p1.getX() + 0.5), (int) ( p1.getY() + 0.5),null );
             }
             if( Math.abs(lastPressed - 0.0 ) < 1.0 )
             {
-                g2D.drawImage(rotateImageObject(p1).filter(link.elementAt
-                                (6), null ), (int) (p1.getX() + 0.5), (int) ( p1.getY() + 0.5 )
-                        ,null ) ;
+                g2D.drawImage(rotateImageObject(p1).filter(link.elementAt(7), null ), (int) (p1.getX() + 0.5), (int) ( p1.getY() + 0.5 ),null ) ;
             }
             if ( Math.abs(lastPressed - 180.0 ) < 1.0 )
             {
-                g2D.drawImage (rotateImageObject(p1).filter(link.elementAt
-                                (0),null),(int)( p1.getX() + 0.5 ), (int) (p1.getY() + 0.5)
-                        ,null);
+                g2D.drawImage (rotateImageObject(p1).filter(link.elementAt(0),null),(int)( p1.getX() + 0.5 ), (int) (p1.getY() + 0.5),null);
             }
         }
-       // g2D.drawImage ( rotate(ImageObject ( p1 ) . filter ( player , null ) , ( int ) (p1.getX() + 0.5), (int) (p1.getY() + 0.5),null));
     }
     private static void healthDraw ()
     {
@@ -869,36 +864,36 @@ public class zelda {
         int rightoffset = 9;
         int interioroffset = 2;
         int halfinterioroffset = 1;
-        for ( int i = 0 ; i < p1.getMaxLife(); i++ )
-        {
-            if ( i% 2 == 0 )
-            {
-                g2D.drawImage ( rotateImageObject(p1).filter(leftHeartOutline,null),
-                        leftscale * i + leftoffset + XOFFSET, YOFFSET,
-                        null );
-            }
-            else
-            {
-                g2D.drawImage ( rotateImageObject(p1).filter(
-                        rightHeartOutline, null ),leftscale * i + rightoffset +
-                        XOFFSET, YOFFSET, null );
-            }
-        }
-        for ( int i = 0 ; i < p1.getLife(); i++)
-        {
-            if ( i % 2 == 0 )
-            {
-                g2D.drawImage ( rotateImageObject(p1).filter(leftHeart, null
-                        ),leftscale * i + leftoffset + interioroffset + XOFFSET,
-                        interioroffset + YOFFSET, null ) ;
-            }
-            else
-            {
-                g2D.drawImage(rotateImageObject(p1).filter( rightHeart, null
-                ), leftscale * i + leftoffset - halfinterioroffset +
-                        XOFFSET, interioroffset + YOFFSET, null );
-            }
-        }
+//        for ( int i = 0 ; i < p1.getMaxLife(); i++ )
+//        {
+//            if ( i% 2 == 0 )
+//            {
+////                g2D.drawImage ( rotateImageObject(p1).filter(leftHeartOutline,null),
+////                        leftscale * i + leftoffset + XOFFSET, YOFFSET,
+////                        null );
+//            }
+//            else
+//            {
+////                g2D.drawImage ( rotateImageObject(p1).filter(
+////                        rightHeartOutline, null ),leftscale * i + rightoffset +
+////                        XOFFSET, YOFFSET, null );
+//            }
+//        }
+//        for ( int i = 0 ; i < p1.getLife(); i++)
+//        {
+//            if ( i % 2 == 0 )
+//            {
+//                g2D.drawImage ( rotateImageObject(p1).filter(leftHeart, null
+//                        ),leftscale * i + leftoffset + interioroffset + XOFFSET,
+//                        interioroffset + YOFFSET, null ) ;
+//            }
+//            else
+//            {
+//                g2D.drawImage(rotateImageObject(p1).filter( rightHeart, null
+//                ), leftscale * i + leftoffset - halfinterioroffset +
+//                        XOFFSET, interioroffset + YOFFSET, null );
+//            }
+//        }
     }
     private static void enemiesDraw ()
     {
@@ -1000,6 +995,7 @@ public class zelda {
         {
             if ( action.equals("UP"))
             {
+
                 upPressed = true;
                 lastPressed = 90.0;
             }
@@ -1505,7 +1501,7 @@ public class zelda {
             }
             return ret;
         }
-        public void rotate( double angleinput )
+        public void rotate(double angleinput )
         {
             angle = angle + angleinput ;
             while ( angle > twoPi )
@@ -1548,16 +1544,15 @@ public class zelda {
         private int dropLife;
         private Boolean bounce ;
     }
-    private static void bindKey ( JPanel myPanel , String input )
+    private static void bindKey (JPanel myPanel , String input )
     {
-        myPanel.getInputMap(IFW).put( KeyStroke.getKeyStroke(" pressed "+
-                input ), input + "pressed" );
-        myPanel.getActionMap().put( input + " pressed ", new KeyPressed ( input
-        ) );
-        myPanel.getInputMap(IFW).put( KeyStroke . getKeyStroke( " released " +
-                input ) , input + " released " );
-        myPanel.getActionMap().put( input + " released ", new KeyReleased (
-                input));
+        myPanel.getInputMap(IFW).put(KeyStroke.getKeyStroke("pressed " + input), input + " pressed");
+        myPanel.getActionMap().put(input + " pressed" , new KeyPressed(input));
+        myPanel.getInputMap(IFW).put(KeyStroke.getKeyStroke("released " + input), input + " released");
+        myPanel.getActionMap().put(input + " released" , new KeyReleased(input));
+
+
+
     }
     public static void main ( String [] args )
     {
@@ -1574,16 +1569,16 @@ public class zelda {
 //    myPanel . add( levelMenu ) ;
 //*/
         JButton quitButton = new JButton ( "Select" );
-        quitButton . addActionListener ( new QuitGame ( ) ) ;
-        myPanel . add ( quitButton ) ;
+        quitButton.addActionListener(new QuitGame( ));
+        myPanel.add(quitButton);
         JButton newGameButton = new JButton ( " Start " ) ;
         newGameButton.addActionListener ( new StartGame () );
-        myPanel . add ( newGameButton ) ;
-        bindKey ( myPanel , "UP" ) ;
-        bindKey ( myPanel , "DOWN" ) ;
-        bindKey ( myPanel , "LEFT" ) ;
-        bindKey ( myPanel , "RIGHT" ) ;
-        bindKey ( myPanel , "F" ) ;
+        myPanel.add(newGameButton);
+        bindKey(myPanel ,"UP");
+        bindKey(myPanel , "DOWN");
+        bindKey(myPanel , "LEFT");
+        bindKey(myPanel , "RIGHT");
+        bindKey(myPanel , "F");
         appFrame.getContentPane().add(myPanel,"South");
         appFrame.setVisible( true );
     }
