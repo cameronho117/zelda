@@ -1,29 +1,21 @@
 import java.awt.*;
+import java.awt.event.*;
 import java.util.Vector;
 import java.util.Random;
 import java.time.LocalTime;
-import java.time.temporal.ChronoUnit;
 import javax.sound.sampled.FloatControl;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JButton;
-import javax.swing.JComponent;
-import javax.swing.KeyStroke;
-import javax.swing.AbstractAction;
-import javax.swing.JComboBox;
+import javax.swing.*;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.geom.AffineTransform;
 import java.awt.image.AffineTransformOp;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 
-public class zelda {
+public class zelda{
     public zelda() {
         setup();
     }
@@ -121,15 +113,14 @@ public class zelda {
                     }
                     if ( i== 8 && j == 9 )
                     {
-                        wallsKI.elementAt(i).elementAt(j).addElement( new ImageObject( 0, 35, 135, 35, 0.0 ));
-                        wallsKI.elementAt(i).elementAt(j).addElement( new ImageObject( 100, 70, 35, 140, 0.0 ));
-                        wallsKI.elementAt(i).elementAt(j).addElement( new ImageObject( 35, 135, 35, 100, 0.0 ));
-                        wallsKI.elementAt(i).elementAt(j).addElement( new ImageObject( 0, 170, 35, 70, 0.0 ));
-                        wallsKI.elementAt(i).elementAt(j).addElement( new ImageObject( 0, 235, 35, 70, 0.0 ));
-                        wallsKI.elementAt(i).elementAt(j).addElement( new ImageObject( 0, 270, 135, 35, 0.0 ));
-                        wallsKI.elementAt(i).elementAt(j).addElement( new ImageObject(170, 270, 135, 35, 0.0 ));
-                        wallsKI.elementAt(i).elementAt(j).addElement( new ImageObject( 300, 35, 35, 270, 0.0 ));
-                        wallsKI.elementAt(i).elementAt(j).addElement( new ImageObject ( 235, 35, 70, 35, 0.0 ));
+                        wallsKI.elementAt(i).elementAt(j).addElement( new ImageObject( 0, 0, 126, 76, 0.0 ));
+                        wallsKI.elementAt(i).elementAt(j).addElement( new ImageObject( 0, 76, 27, 235, 0.0 ));
+                        wallsKI.elementAt(i).elementAt(j).addElement( new ImageObject( 0, 248, 230, 35, 0.0 ));
+                        wallsKI.elementAt(i).elementAt(j).addElement( new ImageObject( 165, 0, 157, 76, 0.0 ));
+                        wallsKI.elementAt(i).elementAt(j).addElement( new ImageObject( 220, 0, 85, 140, 0.0 ));
+                        wallsKI.elementAt(i).elementAt(j).addElement( new ImageObject( 290, 0, 85, 311, 0.0 ));
+                        wallsKI.elementAt(i).elementAt(j).addElement( new ImageObject( 260, 245, 85, 50, 0.0 ));
+
                     }
                 }
             }
@@ -1131,6 +1122,8 @@ public class zelda {
     }
     private static class StartGame implements ActionListener
     {
+
+
         public void actionPerformed ( ActionEvent e )
         {
             endgame = true;
@@ -1613,6 +1606,9 @@ public class zelda {
 
 
     }
+
+
+
     public static void main ( String [] args )
     {
         setup();
