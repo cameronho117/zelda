@@ -103,6 +103,7 @@ public class zelda{
                 {
                     if ( i== 5 && j== 10 )
                     {
+
                         wallsKI.elementAt(i).elementAt(j).addElement( new ImageObject( 270, 35,  68,  70, 0.0 ));
                         wallsKI.elementAt(i).elementAt(j).addElement( new ImageObject( 100, 100, 200, 35 , 0.0 ));
                         wallsKI.elementAt(i).elementAt(j).addElement( new ImageObject( 100, 135, 35,  35, 0.0 ));
@@ -193,7 +194,7 @@ public class zelda{
             sword.addElement(ImageIO.read(new File("left.png")));
             sword.addElement(ImageIO.read(new File("backSword.png")));
             sword.addElement(ImageIO.read(new File("blank.png")));
-           sword.addElement(ImageIO.read(new File("FrontS.png")));
+            sword.addElement(ImageIO.read(new File("FrontS.png")));
 
 
 
