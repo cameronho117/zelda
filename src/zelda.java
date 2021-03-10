@@ -271,9 +271,37 @@ public class zelda{
                 Long curTime = new Long ( System.currentTimeMillis() );
                 if(curTime - lastAudioStart > audiolifetime)
                 {
-                    playAudio ( backgroundState );
+                    playMusic(backgroundState);
+//                    playAudio ( backgroundState );
                 }
             }
+        }
+    }
+
+    private static void playMusic(String backgroundState){
+        try
+        {
+            backClip.stop();
+        }
+        catch ( Exception e )
+        {
+// NOP
+        }
+        try {
+            if (backgroundState.substring(0, 2).equals("KI")) {
+                File f = new File("KI.wav");
+                AudioInputStream audioIn = AudioSystem.getAudioInputStream(f.toURI().toURL());
+                backClip = AudioSystem.getClip();
+                backClip.open(audioIn);
+                FloatControl volume = (FloatControl) backClip.getControl(FloatControl.Type.MASTER_GAIN);
+                volume.setValue(-1 * 28);
+                backClip.start();
+                lastAudioStart = System.currentTimeMillis();
+                audiolifetime = new Long(78000);
+            }
+        }
+        catch(Exception e){
+
         }
     }
     private static void playAudio ( String backgroundState )
@@ -288,19 +316,19 @@ public class zelda{
         }
         try
         {
-            if ( backgroundState.substring(0, 2).equals( "KI" ) )
-            {
-                File f = new File("KI.wav");
-                AudioInputStream audioIn = AudioSystem.getAudioInputStream(f.toURI().toURL());
-                clip = AudioSystem.getClip();
-                clip.open( audioIn );
-                FloatControl volume = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
-                volume.setValue(-1 * 28);
-                clip.start();
-                lastAudioStart = System.currentTimeMillis();
-                audiolifetime = new Long(78000);
-            }
-            else if( backgroundState.substring(0,2).equals ( "TC" ) )
+//            if ( backgroundState.substring(0, 2).equals( "KI" ) )
+//            {
+//                File f = new File("KI.wav");
+//                AudioInputStream audioIn = AudioSystem.getAudioInputStream(f.toURI().toURL());
+//                clip = AudioSystem.getClip();
+//                clip.open( audioIn );
+//                FloatControl volume = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+//                volume.setValue(-1 * 28);
+//                clip.start();
+//                lastAudioStart = System.currentTimeMillis();
+//                audiolifetime = new Long(78000);
+//            }
+            if( backgroundState.substring(0,2).equals ( "TC" ) )
             {
                 AudioInputStream ais = AudioSystem.getAudioInputStream (new File( "TC.wav" ).getAbsoluteFile());
                 clip = AudioSystem.getClip();
@@ -311,6 +339,17 @@ public class zelda{
                 clip.start();
                 lastAudioStart = System.currentTimeMillis();
                 audiolifetime = new Long(191000);
+            }
+            else if(backgroundState.substring(0,2).equals("SW")){
+                File f = new File("swordSound.wav");
+                AudioInputStream audioIn = AudioSystem.getAudioInputStream(f.toURI().toURL());
+                clip = AudioSystem.getClip();
+                clip.open( audioIn );
+                FloatControl volume = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+                volume.setValue(-1 * 28);
+                clip.start();
+                lastAudioStart = System.currentTimeMillis();
+                audiolifetime = new Long(78000);
             }
         }
         catch ( Exception e )
@@ -859,6 +898,7 @@ public class zelda{
                         g2D.drawImage(rotateImageObject(p1).filter(link.elementAt(6), null), (int) (p1.getX() + 0.5), (int) (p1.getY() + 0.5), null);
                     }
                 else{
+                        playAudio("SW");
                     g2D.drawImage(rotateImageObject(p1).filter(sword.elementAt(4), null), (int) (p1.getX() + 0.5), (int) (p1.getY() + -45), null);
 
                 }
@@ -870,6 +910,7 @@ public class zelda{
                     g2D.drawImage(rotateImageObject(p1).filter(link.elementAt(3), null), (int) (p1.getX() + 0.5), (int) (p1.getY() + 0.5), null);
                 }
                 else  {
+                    playAudio("SW");
                     g2D.drawImage(rotateImageObject(p1).filter(sword.elementAt(2), null), (int) (p1.getX() + 0.5), (int) (p1.getY() + 0.5), null);
                 }
             }
@@ -879,6 +920,7 @@ public class zelda{
                     g2D.drawImage(rotateImageObject(p1).filter(link.elementAt(7), null), (int) (p1.getX() + 0.5), (int) (p1.getY() + 0.5), null);
                 }
                else {
+                    playAudio("SW");
                     //g2D.drawImage(rotateImageObject(p1).filter(link.elementAt(3), null ), (int) (p1.getX() + 0.5), (int) ( p1.getY() + 0.5 ),null );
                     g2D.drawImage(rotateImageObject(p1).filter(sword.elementAt(0), null), (int) (p1.getX() + 0.5), (int) (p1.getY() + 0.5), null);
 
@@ -890,6 +932,7 @@ public class zelda{
                 g2D.drawImage(rotateImageObject(p1).filter(link.elementAt(0), null), (int) (p1.getX() + 0.5), (int) (p1.getY() + 0.5), null);
             }
                else{
+                    playAudio("SW");
                     g2D.drawImage(rotateImageObject(p1).filter(sword.elementAt(1), null), (int) (p1.getX() + -45), (int) (p1.getY() + 4), null);
 
 
@@ -1164,8 +1207,9 @@ public class zelda{
             catch (InterruptedException ie )
             {
             }
+
             lastAudioStart = System.currentTimeMillis();
-            playAudio(backgroundState);
+            playMusic(backgroundState);
             endgame = false;
             lastDropLife = System.currentTimeMillis();
             Thread t1 = new Thread ( new Animate ());
@@ -1683,6 +1727,7 @@ public class zelda{
     private static Long audiolifetime;
     private static Long lastAudioStart;
     private static Clip clip;
+    private static Clip backClip;
     private static Long dropLifeLifetime ;
     private static Long lastDropLife;
     private static int XOFFSET;
