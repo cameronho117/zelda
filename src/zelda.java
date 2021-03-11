@@ -113,6 +113,7 @@ public class zelda{
 
                     }
                     if ( i== 8 && j == 9 )
+                    // for image KI0810/KI0811
                     {
                         wallsKI.elementAt(i).elementAt(j).addElement( new ImageObject( 0, 0, 126, 76, 0.0 ));
                         wallsKI.elementAt(i).elementAt(j).addElement( new ImageObject( 0, 76, 27, 235, 0.0 ));
@@ -123,6 +124,30 @@ public class zelda{
                         wallsKI.elementAt(i).elementAt(j).addElement( new ImageObject( 260, 245, 85, 50, 0.0 ));
 
                     }
+                    /*
+                    if ( i== 8 && j== 10 )
+                    // for image KI0710
+                    {
+
+                        wallsKI.elementAt(i).elementAt(j).addElement( new ImageObject( 0, 0,  222,  33, 0.0 ));
+                        wallsKI.elementAt(i).elementAt(j).addElement( new ImageObject( 0, 22, 29, 153 , 0.0 ));
+                        wallsKI.elementAt(i).elementAt(j).addElement( new ImageObject( 0, 223, 25,  16, 0.0 ));
+                        wallsKI.elementAt(i).elementAt(j).addElement( new ImageObject( 0 ,  239, 193,  31, 0.0 ));
+                        wallsKI.elementAt(i).elementAt(j).addElement( new ImageObject( 237, 239, 31 , 31, 0.0 ));
+                        wallsKI.elementAt(i).elementAt(j).addElement ( new ImageObject( 272,0, 50, 30 , 0.0 ));
+                        wallsKI.elementAt(i).elementAt(j).addElement ( new ImageObject( 300,35, 20, 205, 0.0 ));
+
+                    }
+                    if (i ==7 && j == 10)
+                    {
+                        wallsKI.elementAt(i).elementAt(j).addElement(new ImageObject(0, 0, 58,68, 0.0));
+                        wallsKI.elementAt(i).elementAt(j).addElement(new ImageObject(265, 0, 55,67, 0.0));
+                        wallsKI.elementAt(i).elementAt(j).addElement(new ImageObject(0, 69, 27,239, 0.0));
+                        wallsKI.elementAt(i).elementAt(j).addElement(new ImageObject(28, 240, 268,31, 0.0));
+                        wallsKI.elementAt(i).elementAt(j).addElement(new ImageObject(300, 223, 24,17, 0.0));
+                        wallsKI.elementAt(i).elementAt(j).addElement(new ImageObject(300, 70, 320,116, 0.0));
+                    }
+                     */
                 }
             }
 
