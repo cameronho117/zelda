@@ -246,12 +246,12 @@ public class zelda{
             bluepigEnemies = new Vector< ImageObject >();
             bluepigEnemy = new Vector< BufferedImage >();
             bluepigEnemy.addElement(ImageIO.read ( new File ( "pig.png" ) ) );
-            bluepigEnemy.addElement( ImageIO.read ( new File ( "pig.png" ) ) );
-            bluepigEnemy.addElement( ImageIO.read ( new File ( "pig.png" ) ) );
-            bluepigEnemy.addElement(ImageIO.read ( new File ( "pig.png" ) ) );
-            bluepigEnemy.addElement ( ImageIO.read ( new File ( "pig.png" ) ) );
-            bluepigEnemy.addElement ( ImageIO.read ( new File ( "pig.png" ) ) );
-            bluepigEnemy.addElement ( ImageIO.read ( new File ( "pig.png" ) ) );
+            bluepigEnemy.addElement( ImageIO.read ( new File ( "frontPigL.png" ) ) );
+            bluepigEnemy.addElement( ImageIO.read ( new File ( "frontPigR.png" ) ) );
+            bluepigEnemy.addElement(ImageIO.read ( new File ( "leftPig1.png" ) ) );
+            bluepigEnemy.addElement ( ImageIO.read ( new File ( "Pig2.png" ) ) );
+            bluepigEnemy.addElement ( ImageIO.read ( new File ( "rightPig1.png" ) ) );
+            bluepigEnemy.addElement ( ImageIO.read ( new File ( "RightPig2.png" ) ) );
             bluepigEnemy.addElement ( ImageIO.read ( new File ( "pig.png" ) ) );
 // BubbleBoss Enemies
             bubblebossEnemies = new Vector<ImageObject>();
