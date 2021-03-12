@@ -221,6 +221,11 @@ public class zelda{
             sword.addElement(ImageIO.read(new File("blank.png")));
             sword.addElement(ImageIO.read(new File("FrontS.png")));
 
+            sword.addElement(ImageIO.read(new File("wandU.png")));
+            sword.addElement(ImageIO.read(new File("wandD.png")));
+            sword.addElement(ImageIO.read(new File("wandL.png")));
+            sword.addElement(ImageIO.read(new File("wandR.png")));
+
 
 
             link.addElement(ImageIO.read(new File("link00.png")));
@@ -923,47 +928,59 @@ public class zelda{
 
             if( Math.abs( lastPressed-90.0 ) < 1.0 )
             {
-                    if(!ePressed) {
+                    if(!ePressed && !rPressed) {
                         g2D.drawImage(rotateImageObject(p1).filter(link.elementAt(6), null), (int) (p1.getX() + 0.5), (int) (p1.getY() + 0.5), null);
                     }
-                else{
-                        playAudio("SW");
+                else if (ePressed && !rPressed){
+                        playAudio("SWpl");
                     g2D.drawImage(rotateImageObject(p1).filter(sword.elementAt(4), null), (int) (p1.getX() + 0.5), (int) (p1.getY() + -45), null);
 
-                }
+                }else {
+                        g2D.drawImage(rotateImageObject(p1).filter(sword.elementAt(5), null), (int) (p1.getX() + 0.5), (int) (p1.getY() + -45), null);
+
+                    }
 
             }
             if ( Math.abs ( lastPressed- 270.0 ) < 1.0 )
             {
-                if(!ePressed) {
+                if(!ePressed && !rPressed) {
                     g2D.drawImage(rotateImageObject(p1).filter(link.elementAt(3), null), (int) (p1.getX() + 0.5), (int) (p1.getY() + 0.5), null);
                 }
-                else  {
+                else if(ePressed && !rPressed) {
                     playAudio("SW");
                     g2D.drawImage(rotateImageObject(p1).filter(sword.elementAt(2), null), (int) (p1.getX() + 0.5), (int) (p1.getY() + 0.5), null);
+                }else{
+                    g2D.drawImage(rotateImageObject(p1).filter(sword.elementAt(6), null), (int) (p1.getX() + 0.5), (int) (p1.getY() + 0.5), null);
+
                 }
             }
             if( Math.abs(lastPressed - 0.0 ) < 1.0 )
             {
-                if(!ePressed) {
+                if(!ePressed && !rPressed) {
                     g2D.drawImage(rotateImageObject(p1).filter(link.elementAt(7), null), (int) (p1.getX() + 0.5), (int) (p1.getY() + 0.5), null);
                 }
-               else {
+               else if (ePressed && !rPressed) {
                     playAudio("SW");
                     //g2D.drawImage(rotateImageObject(p1).filter(link.elementAt(3), null ), (int) (p1.getX() + 0.5), (int) ( p1.getY() + 0.5 ),null );
                     g2D.drawImage(rotateImageObject(p1).filter(sword.elementAt(0), null), (int) (p1.getX() + 0.5), (int) (p1.getY() + 0.5), null);
+
+                }else{
+                    g2D.drawImage(rotateImageObject(p1).filter(sword.elementAt(8), null), (int) (p1.getX() + 0.5), (int) (p1.getY() + 0.5), null);
 
                 }
             }
             if ( Math.abs(lastPressed - 180.0 ) < 1.0 )
             {
-                if(!ePressed){
+                if(!ePressed && !rPressed){
                 g2D.drawImage(rotateImageObject(p1).filter(link.elementAt(0), null), (int) (p1.getX() + 0.5), (int) (p1.getY() + 0.5), null);
             }
-               else{
+               else if(ePressed && !rPressed){
                     playAudio("SW");
                     g2D.drawImage(rotateImageObject(p1).filter(sword.elementAt(1), null), (int) (p1.getX() + -45), (int) (p1.getY() + 4), null);
 
+
+                }else{
+                    g2D.drawImage(rotateImageObject(p1).filter(sword.elementAt(7), null), (int) (p1.getX() + -45), (int) (p1.getY() + 4), null);
 
                 }
             }
@@ -1147,6 +1164,9 @@ public class zelda{
             if(action.equals("E")){
                 ePressed = true;
         }
+            if(action.equals("R")){
+                rPressed = true;
+            }
         }
         private String action;
     }
@@ -1190,6 +1210,10 @@ public class zelda{
             {
                 ePressed = false;
             }
+            if ( action.equals ( "R" ) )
+            {
+                rPressed = false;
+            }
 
         }
         private String action;
@@ -1215,6 +1239,7 @@ public class zelda{
             aPressed = false;
             xPressed = false;
             ePressed = false;
+            rPressed = false;
             lastPressed = 90.0;
             backgroundState = "KI0809 ";
             availableToDropLife = true;
@@ -1719,6 +1744,8 @@ public class zelda{
         bindKey(myPanel , "RIGHT");
         bindKey(myPanel , "F");
         bindKey(myPanel, "E");
+        bindKey(myPanel, "R");
+
         appFrame.getContentPane().add(myPanel,"South");
         appFrame.setVisible( true );
 
@@ -1754,6 +1781,7 @@ public class zelda{
     private static Boolean aPressed ;
     private static Boolean xPressed ;
     private static Boolean ePressed ;
+    private static Boolean rPressed;
     private static double lastPressed ;
     private static ImageObject p1 ;
     private static double p1width ;
