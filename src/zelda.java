@@ -79,7 +79,7 @@ public class zelda{
                         }
                         filename = filename + i + ".png";
 //System . out . p ri n tl n ( filename ) ;
-                        System.out.println(filename);
+                        System.out.println("walls: " + filename);
                         backgroundKI.elementAt (i).set( j,ImageIO.read ( new File (filename ) ) ) ;
                     }
                 }
@@ -88,11 +88,12 @@ public class zelda{
             wallsKI = new Vector<Vector<Vector<ImageObject>>>();
             for ( int i = 0; i < ydimKI ; i ++ )
             {
-                Vector< Vector< ImageObject > > temp = new Vector< Vector<ImageObject > >();
+                Vector< Vector< ImageObject > > temp = new Vector< Vector<ImageObject >>();
                 for ( int j = 0; j < xdimKI; j ++ )
                 {
                     Vector< ImageObject > tempWalls = new Vector< ImageObject>();
                     temp.addElement (tempWalls);
+
                 }
 
                 wallsKI.add ( temp );
@@ -101,6 +102,7 @@ public class zelda{
             {
                 for ( int j = 0; j < wallsKI.elementAt(i).size(); j++)
                 {
+
                     if ( i== 5 && j== 10 )
                     {
 
@@ -113,8 +115,9 @@ public class zelda{
 
                     }
                     if ( i== 8 && j == 9 )
-                    // for image KI0810/KI0811
+
                     {
+
                         wallsKI.elementAt(i).elementAt(j).addElement( new ImageObject( 0, 0, 126, 76, 0.0 ));
                         wallsKI.elementAt(i).elementAt(j).addElement( new ImageObject( 0, 76, 27, 235, 0.0 ));
                         wallsKI.elementAt(i).elementAt(j).addElement( new ImageObject( 0, 248, 230, 35, 0.0 ));
@@ -124,21 +127,23 @@ public class zelda{
                         wallsKI.elementAt(i).elementAt(j).addElement( new ImageObject( 260, 245, 85, 50, 0.0 ));
 
                     }
+
+//                    if ( i== 6 && j== 9 )
+//                    // for image KI0710
+//                    {
+//
+//                        wallsKI.elementAt(i).elementAt(j).addElement( new ImageObject( 0, 0,  222,  33, 0.0 ));
+//                        wallsKI.elementAt(i).elementAt(j).addElement( new ImageObject( 0, 22, 29, 153 , 0.0 ));
+//                        wallsKI.elementAt(i).elementAt(j).addElement( new ImageObject( 0, 223, 25,  16, 0.0 ));
+//                        wallsKI.elementAt(i).elementAt(j).addElement( new ImageObject( 0 ,  239, 193,  31, 0.0 ));
+//                        wallsKI.elementAt(i).elementAt(j).addElement( new ImageObject( 237, 239, 31 , 31, 0.0 ));
+//                        wallsKI.elementAt(i).elementAt(j).addElement ( new ImageObject( 272,0, 50, 30 , 0.0 ));
+//                        wallsKI.elementAt(i).elementAt(j).addElement ( new ImageObject( 300,35, 20, 205, 0.0 ));
+//
+//                    }
                     /*
-                    if ( i== 8 && j== 10 )
-                    // for image KI0710
-                    {
-
-                        wallsKI.elementAt(i).elementAt(j).addElement( new ImageObject( 0, 0,  222,  33, 0.0 ));
-                        wallsKI.elementAt(i).elementAt(j).addElement( new ImageObject( 0, 22, 29, 153 , 0.0 ));
-                        wallsKI.elementAt(i).elementAt(j).addElement( new ImageObject( 0, 223, 25,  16, 0.0 ));
-                        wallsKI.elementAt(i).elementAt(j).addElement( new ImageObject( 0 ,  239, 193,  31, 0.0 ));
-                        wallsKI.elementAt(i).elementAt(j).addElement( new ImageObject( 237, 239, 31 , 31, 0.0 ));
-                        wallsKI.elementAt(i).elementAt(j).addElement ( new ImageObject( 272,0, 50, 30 , 0.0 ));
-                        wallsKI.elementAt(i).elementAt(j).addElement ( new ImageObject( 300,35, 20, 205, 0.0 ));
-
-                    }
                     if (i ==7 && j == 10)
+                    // for image KI0810/KI0811
                     {
                         wallsKI.elementAt(i).elementAt(j).addElement(new ImageObject(0, 0, 58,68, 0.0));
                         wallsKI.elementAt(i).elementAt(j).addElement(new ImageObject(265, 0, 55,67, 0.0));
@@ -402,6 +407,7 @@ public class zelda{
             if ( xcoord < 10 )
             {
                 ret = input. substring(0, 2 ) + "0" + xcoord;
+
             }
             else
             {
@@ -482,6 +488,9 @@ public class zelda{
                 ret = ret + ycoord;
             }
         }
+
+//        System.out.println(ret); // current image background
+
         return ret;
     }
     private static class PlayerMover implements Runnable
@@ -598,8 +607,14 @@ public class zelda{
     {
         if ( backgroundState.substring(0, 6 ).equals( "KI0809" ) )
         {
-            bluepigEnemies.addElement ( new ImageObject (20 , 90 , 33 , 33 , 0.0 ));
-            bluepigEnemies.addElement ( new ImageObject (250 , 230, 33 , 33 , 0.0)
+            bluepigEnemies.addElement ( new ImageObject (50 , 90 , 33 , 33 , 0.0 ));
+            bluepigEnemies.addElement ( new ImageObject (150 , 210, 33 , 33 , 0.0)
+            );
+        }
+        if ( backgroundState.substring(0, 6 ).equals( "KI0810" ) )
+        {
+            bluepigEnemies.addElement ( new ImageObject (50 , 90 , 33 , 33 , 0.0 ));
+            bluepigEnemies.addElement ( new ImageObject (150 , 210, 33 , 33 , 0.0)
             );
         }
         for ( int i = 0 ; i < bluepigEnemies.size(); i++ )
@@ -666,9 +681,7 @@ public class zelda{
                                         cos( bluepigEnemies.elementAt(i).getInternalAngle()),
                                 bluepigvelocity * Math.sin ( bluepigEnemies.elementAt(i).getInternalAngle ()));
                     }
-                    for ( int i = 0 ; i < bubblebossEnemies.size(); i++ )
-                    {
-                    }
+
                 }
                 catch ( NullPointerException jlnpe )
                 {
@@ -1057,7 +1070,7 @@ public class zelda{
                             bluepigEnemies.elementAt(i).getX() + 0.5), (int)(
                             bluepigEnemies.elementAt(i).getY() + 0.5), null);
                 }
-                bluepigEnemies.elementAt(i).updateCurrentFrame();
+//                bluepigEnemies.elementAt(i).updateCurrentFrame();
             }
             if ( Math.abs(bluepigEnemies.elementAt(i).getInternalAngle() - pi
             ) < 1.0 )
