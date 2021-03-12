@@ -722,6 +722,23 @@ public class zelda{
                     {
                     }
                 }
+                else if (p1.getDropLife() == 0){
+                    try
+                    {
+                        File f = new File("shawty.wav");
+                        AudioInputStream audioIn = AudioSystem.getAudioInputStream(f.toURI().toURL());
+                        Clip shwatyClip = AudioSystem.getClip();
+                        shwatyClip.open(audioIn);
+                        FloatControl volume = (FloatControl) shwatyClip.getControl(FloatControl.Type.MASTER_GAIN);
+                        volume.setValue(-1 * 28);
+                        shwatyClip.start();
+                        lastAudioStart = System.currentTimeMillis();
+                        audiolifetime = new Long(78000);
+                    }
+                    catch ( Exception e )
+                    {
+                    }
+                }
                 else
                 {
                     if ( curTime - lastDropLife > dropLifeLifetime )
