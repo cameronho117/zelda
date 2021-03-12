@@ -245,21 +245,21 @@ public class zelda{
 // BluePig Enemy ’ s images
             bluepigEnemies = new Vector< ImageObject >();
             bluepigEnemy = new Vector< BufferedImage >();
-            bluepigEnemy.addElement(ImageIO.read ( new File ( "BPB1.png" ) ) );
-            bluepigEnemy.addElement( ImageIO.read ( new File ( "BPB2.png" ) ) );
-            bluepigEnemy.addElement( ImageIO.read ( new File ( "BPF1.png" ) ) );
-            bluepigEnemy.addElement(ImageIO.read ( new File ( "BPF2.png" ) ) );
-            bluepigEnemy.addElement ( ImageIO.read ( new File ( "BPL1.png" ) ) );
-            bluepigEnemy.addElement ( ImageIO.read ( new File ( "BPL2.png" ) ) );
-            bluepigEnemy.addElement ( ImageIO.read ( new File ( "BPR1.png" ) ) );
-            bluepigEnemy.addElement ( ImageIO.read ( new File ( "BPR2.png" ) ) );
+            bluepigEnemy.addElement(ImageIO.read ( new File ( "pig.png" ) ) );
+            bluepigEnemy.addElement( ImageIO.read ( new File ( "pig.png" ) ) );
+            bluepigEnemy.addElement( ImageIO.read ( new File ( "pig.png" ) ) );
+            bluepigEnemy.addElement(ImageIO.read ( new File ( "pig.png" ) ) );
+            bluepigEnemy.addElement ( ImageIO.read ( new File ( "pig.png" ) ) );
+            bluepigEnemy.addElement ( ImageIO.read ( new File ( "pig.png" ) ) );
+            bluepigEnemy.addElement ( ImageIO.read ( new File ( "pig.png" ) ) );
+            bluepigEnemy.addElement ( ImageIO.read ( new File ( "pig.png" ) ) );
 // BubbleBoss Enemies
             bubblebossEnemies = new Vector<ImageObject>();
 // Health images
-//            leftHeartOutline = ImageIO.read ( new File ( " heartOutlineLeft.png") );
-//            rightHeartOutline = ImageIO.read ( new File ( "heartOutlineRight.png" ) );
-//            leftHeart = ImageIO.read ( new File ( "heartLeft.png" ));
-//            rightHeart = ImageIO.read ( new File ( "heartRight.png" ) );
+            rightHeartOutline = ImageIO.read ( new File ( "heartOutlineRight.png" ) );
+            leftHeartOutline = ImageIO.read ( new File ( "heartOutlineleft.png") );
+            leftHeart = ImageIO.read ( new File ( "heartleft.png" ));
+            rightHeart = ImageIO.read ( new File ( "heartRight.png" ) );
         }
         catch ( IOException ioe )
         {
@@ -274,7 +274,7 @@ public class zelda{
             while ( endgame == false )
             {
                 backgroundDraw();
-                //enemiesDraw();
+                enemiesDraw();
                 playerDraw();
                 healthDraw();
                 try
@@ -747,21 +747,21 @@ public class zelda{
                 {
                     checkMoversAgainstWalls ( wallsKI.elementAt(8).elementAt(9));
                 }
-// check player against enemies
-//                for ( int i = 0 ; i < bluepigEnemies.size(); i++ )
-//                {
-//                    if ( collisionOccurs( p1, bluepigEnemies.elementAt(i)) )
-//                    {
-////System . out . p ri n tl n ( " S t i l l C ollidin g : " + i + " , " +
-//                        System.currentTimeMillis();
-//                        p1.setBounce(true);
-//                        bluepigEnemies.elementAt(i).setBounce(true);
-//                        if(availableToDropLife)
-//                        {
-//                            p1.setDropLife(1);
-//                        }
-//                    }
-//                }
+ //check player against enemies
+                for ( int i = 0 ; i < bluepigEnemies.size(); i++ )
+                {
+                    if ( collisionOccurs( p1, bluepigEnemies.elementAt(i)) )
+                    {
+//System . out . p ri n tl n ( " S t i l l C ollidin g : " + i + " , " +
+                        System.currentTimeMillis();
+                        p1.setBounce(true);
+                        bluepigEnemies.elementAt(i).setBounce(true);
+                        if(availableToDropLife)
+                        {
+                            p1.setDropLife(1);
+                        }
+                    }
+                }
 // TODO: check enemies against walls
 // TODO: check player against deep water or pi t s
 // TODO: check player against enemy arrows
@@ -778,10 +778,10 @@ public class zelda{
                 }
                 for ( int j = 0 ; j < bluepigEnemies.size(); j++ )
                 {
-//                    if ( collisionOccurs ( bluepigEnemies.elementAt(j), wallsInput.elementAt(i)))
-//                    {
-//                        bluepigEnemies.elementAt(j).setBounce(true);
-//                    }
+                    if ( collisionOccurs ( bluepigEnemies.elementAt(j), wallsInput.elementAt(i)))
+                    {
+                        bluepigEnemies.elementAt(j).setBounce(true);
+                    }
                 }
             }
         }
@@ -965,6 +965,9 @@ public class zelda{
             }
         }
     }
+
+
+
     private static void healthDraw ()
     {
         Graphics g = appFrame.getGraphics();
@@ -974,37 +977,42 @@ public class zelda{
         int rightoffset = 9;
         int interioroffset = 2;
         int halfinterioroffset = 1;
-//        for ( int i = 0 ; i < p1.getMaxLife(); i++ )
-//        {
-//            if ( i% 2 == 0 )
-//            {
-////                g2D.drawImage ( rotateImageObject(p1).filter(leftHeartOutline,null),
-////                        leftscale * i + leftoffset + XOFFSET, YOFFSET,
-////                        null );
-//            }
-//            else
-//            {
-////                g2D.drawImage ( rotateImageObject(p1).filter(
-////                        rightHeartOutline, null ),leftscale * i + rightoffset +
-////                        XOFFSET, YOFFSET, null );
-//            }
-//        }
-//        for ( int i = 0 ; i < p1.getLife(); i++)
-//        {
-//            if ( i % 2 == 0 )
-//            {
-//                g2D.drawImage ( rotateImageObject(p1).filter(leftHeart, null
-//                        ),leftscale * i + leftoffset + interioroffset + XOFFSET,
-//                        interioroffset + YOFFSET, null ) ;
-//            }
-//            else
-//            {
-//                g2D.drawImage(rotateImageObject(p1).filter( rightHeart, null
-//                ), leftscale * i + leftoffset - halfinterioroffset +
-//                        XOFFSET, interioroffset + YOFFSET, null );
-//            }
-//        }
+        for ( int i = 0 ; i < p1.getMaxLife(); i++ )
+        {
+            if ( i% 2 == 0 )
+            {
+                g2D.drawImage ( rotateImageObject(p1).filter(leftHeartOutline,null),
+                        leftscale * i + leftoffset + XOFFSET, YOFFSET,
+                        null );
+            }
+            else
+            {
+                g2D.drawImage ( rotateImageObject(p1).filter(
+                        rightHeartOutline, null ),leftscale * i + rightoffset +
+                        XOFFSET, YOFFSET, null );
+            }
+        }
+        for ( int i = 0 ; i < p1.getLife(); i++)
+        {
+            if ( i % 2 == 0 )
+            {
+                g2D.drawImage ( rotateImageObject(p1).filter(leftHeart, null
+                        ),leftscale * i + leftoffset + interioroffset + XOFFSET,
+                        interioroffset + YOFFSET, null ) ;
+            }
+            else
+            {
+                g2D.drawImage(rotateImageObject(p1).filter( rightHeart, null
+                ), leftscale * i + leftoffset - halfinterioroffset +
+                        XOFFSET, interioroffset + YOFFSET, null );
+            }
+        }
     }
+
+
+
+
+
     private static void enemiesDraw ()
     {
         Graphics g = appFrame.getGraphics ();
@@ -1729,6 +1737,7 @@ public class zelda{
     private static BufferedImage rightHeartOutline;
     private static BufferedImage leftHeart;
     private static BufferedImage rightHeart;
+    private static BufferedImage emptyHeart;
     private static Vector< BufferedImage > bluepigEnemy;
     private static Vector< ImageObject > bluepigEnemies;
     private static Vector< ImageObject > bubblebossEnemies ;
