@@ -690,11 +690,15 @@ public class zelda{
                     p1.setLife(newLife);
                     try
                     {
-                        AudioInputStream ais = AudioSystem.getAudioInputStream (
-                                new File ( "hurt.wav" ).getAbsoluteFile());
+                        File f = new File("hurt.wav");
+                        AudioInputStream audioIn = AudioSystem.getAudioInputStream(f.toURI().toURL());
                         Clip hurtclip = AudioSystem.getClip();
-                        hurtclip.open(ais);
+                        hurtclip.open(audioIn);
+                        FloatControl volume = (FloatControl) hurtclip.getControl(FloatControl.Type.MASTER_GAIN);
+                        volume.setValue(-1 * 28);
                         hurtclip.start();
+                        lastAudioStart = System.currentTimeMillis();
+                        audiolifetime = new Long(78000);
                     }
                     catch ( Exception e )
                     {
